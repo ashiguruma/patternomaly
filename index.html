@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas Pattern Generator</title>
+
+    <script src="Chart.js" charset="utf-8"></script>
+  </head>
+  <body onload="load();">
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <script src="dist/patterns.js" charset="utf-8"></script>
+    <script>
+    let load = function() {
+      console.log(pattern)
+      var canvas = document.getElementById("canvas")
+      var context = canvas.getContext('2d');
+
+      var data = {
+        label: 'Bar Chart',
+        datasets: [{
+          label: 'Bar Chart',
+          data: [300, 50, 100, 0],
+          backgroundColor: [
+            pattern.draw('square', '#f7464a', '', 12),
+            '#46bfbd',
+            pattern.draw('circle', '#fdb45c'),
+            '#09f341'
+          ],
+          // hoverBackgroundColor: [chartContext.createPattern(highlightPatternCanvas, 'repeat'), "#5AD3D1", "#FFC870"]
+        }],
+        labels: ['Red', 'Green', 'Yellow', 'Other']
+      };
+
+      new Chart(context, {
+        type: 'bar',
+        data: data
+      });
+    };
+    </script>
+  </body>
+</html>
