@@ -1,7 +1,7 @@
 {
   "name": "canvas-patterns",
   "version": "1.0.0",
-  "description": "Generate patterns for canvas",
+  "description": "Easily generate CanvasPattern objects for use in data graphics.",
   "main": "index.js",
   "directories": {
     "test": "test"
