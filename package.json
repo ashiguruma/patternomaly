@@ -7,10 +7,19 @@
     "test": "test"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-tape-runner": "^2.0.1",
+    "canvas": "^1.4.0",
+    "eslint": "^2.11.1",
+    "rollup": "^0.26.3",
+    "tape": "^4.5.1",
+    "tape-run": "^2.1.4"
+  },
   "scripts": {
     "build": "rollup -f umd -n pattern -i index.js -o dist/patterns.js",
-    "test": ""
+    "test": "babel-tape-runner test/index.js"
   },
   "author": "",
   "license": "MIT"
