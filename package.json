@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "rollup -f umd -n pattern -i index.js -o dist/patterns.js",
-    "test": "babel-tape-runner test/index.js | faucet"
+    "test": "babel-tape-runner test/**/*.js | faucet"
   },
   "author": "",
   "license": "MIT"
