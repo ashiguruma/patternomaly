@@ -1,5 +1,4 @@
 import test from 'tape';
-import canvas from 'canvas';
 import jsdom from 'jsdom';
 
 import { square, circle } from '../src/shapes.js';
