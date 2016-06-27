@@ -3,7 +3,7 @@ import jsdom from 'jsdom';
 
 import pattern from '../src/patterns';
 
-global.document = jsdom.jsdom('<html></html>')
+global.document = jsdom.jsdom('<html></html>');
 global.window = global.document.defaultView;
 
 test('pattern returns a canvas context', (t) => {

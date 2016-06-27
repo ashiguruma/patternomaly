@@ -3,7 +3,7 @@ import jsdom from 'jsdom';
 
 import { square, circle } from '../src/shapes.js';
 
-global.document = jsdom.jsdom('<html></html>')
+global.document = jsdom.jsdom('<html></html>');
 global.window = global.document.defaultView;
 
 test('square returns a canvas element of specified width and height', (t) => {
