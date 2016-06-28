@@ -11,7 +11,6 @@
     <script src="dist/patterns.js" charset="utf-8"></script>
     <script>
     let load = function() {
-      console.log(pattern)
       var canvas = document.getElementById("canvas")
       var context = canvas.getContext('2d');
 
@@ -22,8 +21,8 @@
           data: [300, 50, 100, 0],
           backgroundColor: [
             pattern.draw('square', '#f7464a'),
-            '#46bfbd',
-            pattern.draw('circle', '#fdb45c'),
+            pattern.draw('circle', '#46bfbd'),
+            pattern.draw('diamond', '#fdb45c'),
             '#09f341'
           ],
           // hoverBackgroundColor: [chartContext.createPattern(highlightPatternCanvas, 'repeat'), "#5AD3D1", "#FFC870"]
