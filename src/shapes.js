@@ -34,3 +34,17 @@ export function circle (diameter) {
 
   return shape.canvas;
 }
+
+export function diamond (width) {
+  let shape = generateShape(width);
+  width = Math.sqrt(Math.pow(width, 2) / 2);
+  let height = width;
+
+  shape.context.translate(shape.canvas.width / 2, shape.canvas.height / 2);
+  shape.context.rotate(0.785);
+  shape.context.translate((width / 2) * -1, (height / 2) * -1);
+  shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.fillRect(0, 0, width, height);
+
+  return shape.canvas;
+}

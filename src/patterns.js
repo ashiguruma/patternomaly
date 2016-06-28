@@ -1,4 +1,8 @@
-import { square, circle } from './shapes';
+import {
+  square,
+  circle,
+  diamond
+} from './shapes';
 
 function draw (
   shape = 'square',
@@ -12,11 +16,14 @@ function draw (
   let pattern;
 
   switch (shape) {
-  case 'circle':
-    pattern = circle;
-    break;
-  default:
-    pattern = square;
+    case 'circle':
+      pattern = circle;
+      break;
+    case 'diamond':
+      pattern = diamond;
+      break;
+    default:
+      pattern = square;
   }
 
   // create a canvas to hold the pattern
