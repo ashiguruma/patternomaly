@@ -27,19 +27,19 @@ function draw (
   }
 
   // create a canvas to hold the pattern
-  patternCanvas.width = outerSize * window.devicePixelRatio;
-  patternCanvas.height = outerSize * window.devicePixelRatio;
+  patternCanvas.width = outerSize;
+  patternCanvas.height = outerSize;
 
   // create coloured background rect
   patternContext.fillStyle = backgroundColor;
   patternContext.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
 
+  patternContext.scale(1/window.devicePixelRatio, 1/window.devicePixelRatio);
+
   // create pattern overlay rect
-  pattern = patternContext.createPattern(pattern.call(this, size*window.devicePixelRatio), 'repeat');
+  pattern = patternContext.createPattern(pattern.call(this, size * window.devicePixelRatio), 'repeat');
   patternContext.fillStyle = pattern;
   patternContext.fillRect(0, 0, size*window.devicePixelRatio, size*window.devicePixelRatio);
-
-  patternContext.scale(window.devicePixelRatio, window.devicePixelRatio);
 
   return patternContext.createPattern(patternCanvas, 'repeat');
 }
