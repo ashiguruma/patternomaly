@@ -10,9 +10,10 @@ function draw (
   patternColor = 'rgba(255, 255, 255, 0.7)',
   size = 8
 ) {
+  let outerSize = size * 2;
   let patternCanvas = document.createElement('canvas');
   let patternContext = patternCanvas.getContext('2d');
-  let outerSize = size * 2;
+  let ratio = window.devicePixelRatio;
   let pattern;
 
   switch (shape) {
@@ -34,12 +35,12 @@ function draw (
   patternContext.fillStyle = backgroundColor;
   patternContext.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
 
-  patternContext.scale(1/window.devicePixelRatio, 1/window.devicePixelRatio);
+  patternContext.scale(1 / ratio, 1 / ratio);
 
   // create pattern overlay rect
-  pattern = patternContext.createPattern(pattern.call(this, size * window.devicePixelRatio), 'repeat');
+  pattern = patternContext.createPattern(pattern.call(this, size * ratio), 'repeat');
   patternContext.fillStyle = pattern;
-  patternContext.fillRect(0, 0, size*window.devicePixelRatio, size*window.devicePixelRatio);
+  patternContext.fillRect(0, 0, size * ratio, size * ratio);
 
   return patternContext.createPattern(patternCanvas, 'repeat');
 }
