@@ -9,19 +9,30 @@
     <script>
       var canvas = document.getElementById("canvas")
       var context = canvas.getContext('2d');
+      console.log(context.backingStorePixelRatio);
+
+      canvas.width = 100;
+      canvas.height = 100;
 
       var shapeCanvas = document.createElement("canvas")
       var shapeContext = shapeCanvas.getContext('2d');
-
       shapeCanvas.width = 200;
       shapeCanvas.height = 200;
-      context.scale(0.5, 0.5);
+
+      shapeContext.scale(0.5, 0.5);
       shapeContext.beginPath();
       shapeContext.fillStyle = 'rgba(0, 0, 0, 0.7)';
-      shapeContext.arc(100, 100, 100, 0, 2 * Math.PI);
+      shapeContext.arc(200, 200, 200, 0, 2 * Math.PI);
       shapeContext.fill();
 
-      context.drawImage(shapeCanvas, 0, 0);
+      var containerCanvas = document.createElement("canvas")
+      var containerContext = containerCanvas.getContext('2d');
+
+      containerContext.scale(0.5, 0.5);
+
+      containerContext.drawImage(shapeCanvas, 0, 0);
+
+      context.drawImage(containerCanvas, 0, 0);
     </script>
   </body>
 </html>
