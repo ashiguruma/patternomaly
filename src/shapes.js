@@ -16,7 +16,7 @@ export function square (width) {
   let height = width;
 
   shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
-  shape.context.fillRect(0, 0, width, height);
+  shape.context.fillRect(0, 0, width / 2, height / 2);
 
   return shape.canvas;
 }
@@ -29,7 +29,7 @@ export function circle (diameter) {
 
   shape.context.beginPath();
   shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
-  shape.context.arc(offset, offset, radius, 0, 2 * Math.PI);
+  shape.context.arc(offset, offset, radius / 2, 0, 2 * Math.PI);
   shape.context.fill();
 
   return shape.canvas;
@@ -45,6 +45,16 @@ export function diamond (width) {
   shape.context.translate((width / 2) * -1, (height / 2) * -1);
   shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
   shape.context.fillRect(0, 0, width, height);
+
+  return shape.canvas;
+}
+
+export function lineh (width) {
+  let thickness = width / 4;
+  let shape = generateShape(width);
+
+  shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.fillRect(0, 0, width, thickness);
 
   return shape.canvas;
 }

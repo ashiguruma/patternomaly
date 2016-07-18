@@ -18,21 +18,33 @@
         label: 'Bar Chart',
         datasets: [{
           label: 'Bar Chart',
-          data: [300, 50, 100, 0],
+          data: [300, 50, 100, 210, 140, 56, 80],
           backgroundColor: [
-            pattern.draw('square', '#f7464a'),
-            pattern.draw('circle', '#46bfbd'),
-            pattern.draw('diamond', '#fdb45c'),
-            '#09f341'
+            pattern.draw('square', '#1f77b4'),
+            pattern.draw('circle', '#ff7f0e'),
+            pattern.draw('diamond', '#2ca02c'),
+            pattern.draw('lineh', '#d62728'),
+            pattern.draw('linev', '#9467bd'),
+            pattern.draw('lined', '#8c564b'),
+            pattern.draw('star', '#e377c2')
           ],
           // hoverBackgroundColor: [chartContext.createPattern(highlightPatternCanvas, 'repeat'), "#5AD3D1", "#FFC870"]
         }],
-        labels: ['Red', 'Green', 'Yellow', 'Other']
+        labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven']
       };
 
       new Chart(context, {
         type: 'bar',
-        data: data
+        data: data,
+        options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+        }
       });
     };
     </script>

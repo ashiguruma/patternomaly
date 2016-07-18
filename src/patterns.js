@@ -1,16 +1,16 @@
 import {
   square,
   circle,
-  diamond
+  diamond,
+  lineh
 } from './shapes';
 
 function draw (
   shape = 'square',
   backgroundColor = 'rgba(100, 100, 100, 0.7)',
   patternColor = 'rgba(255, 255, 255, 0.7)',
-  size = 10
+  size = 20
 ) {
-  let outerSize = size * 2;
   let patternCanvas = document.createElement('canvas');
   let patternContext = patternCanvas.getContext('2d');
   let pattern;
@@ -22,13 +22,16 @@ function draw (
     case 'diamond':
       pattern = diamond;
       break;
+    case 'lineh':
+      pattern = lineh;
+      break;
     default:
       pattern = square;
   }
 
   // create a canvas to hold the pattern
-  patternCanvas.width = outerSize;
-  patternCanvas.height = outerSize;
+  patternCanvas.width = size;
+  patternCanvas.height = size;
 
   // create coloured background rect
   patternContext.fillStyle = backgroundColor;
