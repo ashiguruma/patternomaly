@@ -2,7 +2,8 @@ import {
   square,
   circle,
   diamond,
-  lineh
+  lineHorizontal,
+  lineVertical
 } from './shapes';
 
 function draw (
@@ -22,8 +23,11 @@ function draw (
     case 'diamond':
       pattern = diamond;
       break;
-    case 'lineh':
-      pattern = lineh;
+    case 'line-horizontal':
+      pattern = lineHorizontal;
+      break;
+    case 'line-vertical':
+      pattern = lineVertical;
       break;
     default:
       pattern = square;

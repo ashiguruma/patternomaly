@@ -49,12 +49,22 @@ export function diamond (width) {
   return shape.canvas;
 }
 
-export function lineh (width) {
+export function lineHorizontal (width) {
   let thickness = width / 4;
   let shape = generateShape(width);
 
   shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
   shape.context.fillRect(0, 0, width, thickness);
+
+  return shape.canvas;
+}
+
+export function lineVertical (width) {
+  let thickness = width / 4;
+  let shape = generateShape(width);
+
+  shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.fillRect(0, 0, thickness, width);
 
   return shape.canvas;
 }
