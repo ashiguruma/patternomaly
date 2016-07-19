@@ -68,3 +68,25 @@ export function lineVertical (width) {
 
   return shape.canvas;
 }
+
+export function lineDiagonalLeftToRight (width) {
+  let thickness = width / 4;
+  let shape = generateShape(width);
+  let height = width;
+
+  shape.context.beginPath();
+  shape.context.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.lineWidth = thickness;
+  shape.context.moveTo(thickness, -thickness);
+  shape.context.lineTo(width + thickness, height - thickness);
+  shape.context.stroke();
+
+  shape.context.beginPath();
+  shape.context.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.lineWidth = thickness;
+  shape.context.moveTo(-thickness, thickness);
+  shape.context.lineTo(width - thickness, height + thickness);
+  shape.context.stroke();
+
+  return shape.canvas;
+}

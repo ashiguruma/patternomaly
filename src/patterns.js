@@ -3,7 +3,8 @@ import {
   circle,
   diamond,
   lineHorizontal,
-  lineVertical
+  lineVertical,
+  lineDiagonalLeftToRight
 } from './shapes';
 
 function draw (
@@ -28,6 +29,9 @@ function draw (
       break;
     case 'line-vertical':
       pattern = lineVertical;
+      break;
+    case 'line-diagonal-lr':
+      pattern = lineDiagonalLeftToRight;
       break;
     default:
       pattern = square;
