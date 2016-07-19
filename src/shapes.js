@@ -11,6 +11,8 @@ function generateShape (size) {
   };
 }
 
+// TODO make shapes reusable e.g `diamond` could/should use `square`
+
 export function square (width) {
   let shape = generateShape(width);
   let height = width;
@@ -86,6 +88,30 @@ export function lineDiagonalLeftToRight (width) {
   shape.context.lineWidth = thickness;
   shape.context.moveTo(-thickness, thickness);
   shape.context.lineTo(width - thickness, height + thickness);
+  shape.context.stroke();
+
+  return shape.canvas;
+}
+
+export function lineDiagonalRightToLeft (width) {
+  let thickness = width / 4;
+  let shape = generateShape(width);
+  let height = width;
+
+  // TODO could this just be a 'flipped' version of the left to right line?
+
+  shape.context.beginPath();
+  shape.context.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.lineWidth = thickness;
+  shape.context.moveTo(width + thickness, thickness);
+  shape.context.lineTo(thickness, height + thickness);
+  shape.context.stroke();
+
+  shape.context.beginPath();
+  shape.context.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.lineWidth = thickness;
+  shape.context.moveTo(width - thickness, -thickness);
+  shape.context.lineTo(-thickness, height - thickness);
   shape.context.stroke();
 
   return shape.canvas;

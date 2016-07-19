@@ -4,7 +4,8 @@ import {
   diamond,
   lineHorizontal,
   lineVertical,
-  lineDiagonalLeftToRight
+  lineDiagonalLeftToRight,
+  lineDiagonalRightToLeft
 } from './shapes';
 
 function draw (
@@ -32,6 +33,9 @@ function draw (
       break;
     case 'line-diagonal-lr':
       pattern = lineDiagonalLeftToRight;
+      break;
+    case 'line-diagonal-rl':
+      pattern = lineDiagonalRightToLeft;
       break;
     default:
       pattern = square;
