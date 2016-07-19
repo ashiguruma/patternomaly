@@ -18,7 +18,7 @@
         label: 'Bar Chart',
         datasets: [{
           label: 'Bar Chart',
-          data: [300, 50, 100, 210, 140, 56, 80],
+          data: [300, 50, 100, 210, 140, 56, 80, 260],
           backgroundColor: [
             pattern.draw('square', '#1f77b4'),
             pattern.draw('circle', '#ff7f0e'),
@@ -26,11 +26,12 @@
             pattern.draw('line-horizontal', '#d62728'),
             pattern.draw('line-vertical', '#9467bd'),
             pattern.draw('line-diagonal-lr', '#8c564b'),
-            pattern.draw('line-diagonal-rl', '#e377c2')
+            pattern.draw('line-diagonal-rl', '#e377c2'),
+            pattern.draw('triangle', '#7f7f7f')
           ],
           // hoverBackgroundColor: [chartContext.createPattern(highlightPatternCanvas, 'repeat'), "#5AD3D1", "#FFC870"]
         }],
-        labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven']
+        labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight']
       };
 
       new Chart(context, {

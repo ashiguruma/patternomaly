@@ -116,3 +116,18 @@ export function lineDiagonalRightToLeft (width) {
 
   return shape.canvas;
 }
+
+export function triangle (size) {
+  let shape = generateShape(size);
+  size = size / 2;
+
+  shape.context.beginPath();
+  shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.moveTo(size, size * 0.5);
+  shape.context.lineTo(size * 1.5, size * 1.5);
+  shape.context.lineTo(size * 0.5, size * 1.5);
+  shape.context.lineTo(size, size * 0.5);
+  shape.context.fill();
+
+  return shape.canvas;
+}

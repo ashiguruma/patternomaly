@@ -5,7 +5,8 @@ import {
   lineHorizontal,
   lineVertical,
   lineDiagonalLeftToRight,
-  lineDiagonalRightToLeft
+  lineDiagonalRightToLeft,
+  triangle
 } from './shapes';
 
 function draw (
@@ -24,6 +25,9 @@ function draw (
       break;
     case 'diamond':
       pattern = diamond;
+      break;
+    case 'triangle':
+      pattern = triangle;
       break;
     case 'line-horizontal':
       pattern = lineHorizontal;
