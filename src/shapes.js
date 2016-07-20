@@ -148,3 +148,35 @@ export function triangleInverted (size) {
 
   return shape.canvas;
 }
+
+export function zigzagVertical (width) {
+  let thickness = width / 4;
+  let shape = generateShape(width);
+  let height = width;
+
+  shape.context.beginPath();
+  shape.context.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.lineWidth = thickness;
+  shape.context.moveTo(thickness, -thickness);
+  shape.context.lineTo(width - thickness, height / 2);
+  shape.context.lineTo(thickness, height + thickness);
+  shape.context.stroke();
+
+  return shape.canvas;
+}
+
+export function zigzagHorizontal (width) {
+  let thickness = width / 4;
+  let shape = generateShape(width);
+  let height = width;
+
+  shape.context.beginPath();
+  shape.context.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.lineWidth = thickness;
+  shape.context.moveTo(-thickness, thickness);
+  shape.context.lineTo(width / 2, height - thickness);
+  shape.context.lineTo(width + thickness, thickness);
+  shape.context.stroke();
+
+  return shape.canvas;
+}

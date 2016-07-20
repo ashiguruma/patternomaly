@@ -7,7 +7,9 @@ import {
   lineHorizontal,
   lineVertical,
   lineDiagonalLeftToRight,
-  lineDiagonalRightToLeft
+  lineDiagonalRightToLeft,
+  zigzagHorizontal,
+  zigzagVertical
 } from './shapes';
 
 function draw (
@@ -44,6 +46,12 @@ function draw (
       break;
     case 'line-diagonal-rl':
       pattern = lineDiagonalRightToLeft;
+      break;
+    case 'zigzag-horizontal':
+      pattern = zigzagHorizontal;
+      break;
+    case 'zigzag-vertical':
+      pattern = zigzagVertical;
       break;
     default:
       pattern = square;
