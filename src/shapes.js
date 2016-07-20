@@ -39,7 +39,7 @@ export function circle (diameter) {
 
 export function diamond (width) {
   let shape = generateShape(width);
-  width = Math.sqrt(Math.pow(width, 2) / 2);
+  width = Math.sqrt(Math.pow(width, 2) / 2) / 2;
   let height = width;
 
   shape.context.translate(shape.canvas.width / 2, shape.canvas.height / 2);
@@ -122,6 +122,23 @@ export function triangle (size) {
   size = size / 2;
 
   shape.context.beginPath();
+  shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.moveTo(size, size * 0.5);
+  shape.context.lineTo(size * 1.5, size * 1.5);
+  shape.context.lineTo(size * 0.5, size * 1.5);
+  shape.context.lineTo(size, size * 0.5);
+  shape.context.fill();
+
+  return shape.canvas;
+}
+
+export function triangleInverted (size) {
+  let shape = generateShape(size);
+  size = size / 2;
+
+  shape.context.beginPath();
+  shape.context.translate(size * 2, size * 2);
+  shape.context.rotate(3.14);
   shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
   shape.context.moveTo(size, size * 0.5);
   shape.context.lineTo(size * 1.5, size * 1.5);

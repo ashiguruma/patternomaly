@@ -2,11 +2,12 @@ import {
   square,
   circle,
   diamond,
+  triangle,
+  triangleInverted,
   lineHorizontal,
   lineVertical,
   lineDiagonalLeftToRight,
-  lineDiagonalRightToLeft,
-  triangle
+  lineDiagonalRightToLeft
 } from './shapes';
 
 function draw (
@@ -29,6 +30,9 @@ function draw (
     case 'triangle':
       pattern = triangle;
       break;
+    case 'triangle-inverted':
+      pattern = triangleInverted;
+      break;
     case 'line-horizontal':
       pattern = lineHorizontal;
       break;
@@ -45,9 +49,11 @@ function draw (
       pattern = square;
   }
 
+  let outerSize = size * 2;
+
   // create a canvas to hold the pattern
-  patternCanvas.width = size;
-  patternCanvas.height = size;
+  patternCanvas.width = outerSize;
+  patternCanvas.height = outerSize;
 
   // create coloured background rect
   patternContext.fillStyle = backgroundColor;
@@ -56,7 +62,7 @@ function draw (
   // create pattern overlay rect
   pattern = patternContext.createPattern(pattern.call(this, size), 'repeat');
   patternContext.fillStyle = pattern;
-  patternContext.fillRect(0, 0, size, size);
+  patternContext.fillRect(0, 0, outerSize, outerSize);
 
 
   return patternContext.createPattern(patternCanvas, 'repeat');
