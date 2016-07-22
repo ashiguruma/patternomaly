@@ -1,6 +1,6 @@
 import test from 'tape';
 
-import pattern from '../src/patterns';
+import pattern from '../../src/patterns';
 
 test('pattern returns a canvas pattern', (t) => {
   t.plan(1);

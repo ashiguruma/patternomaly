@@ -5,7 +5,7 @@ import {
   square,
   circle,
   diamond
-} from '../src/shapes.js';
+} from '../../src/shapes.js';
 
 global.document = jsdom.jsdom('<html></html>');
 

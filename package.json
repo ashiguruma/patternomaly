@@ -22,7 +22,7 @@
   "scripts": {
     "build": "rollup -f umd -n pattern -i index.js -o dist/patterns.js",
     "build:watch": "watch 'npm run build' src/ test/",
-    "test": "babel-tape-runner test/**/*.js | faucet",
+    "test": "babel-tape-runner test/unit/**/*.js | faucet",
     "test:watch": "watch 'npm test' src/ test/",
     "lint": "eslint src/ test/"
   },
