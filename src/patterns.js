@@ -13,65 +13,62 @@ import {
 } from './shapes';
 
 function draw (
-  shape = 'square',
+  shapeType = 'square',
   backgroundColor = 'rgba(100, 100, 100, 0.7)',
   patternColor = 'rgba(255, 255, 255, 0.7)',
   size = 20
 ) {
+  let shape;
+  let pattern;
   let patternCanvas = document.createElement('canvas');
   let patternContext = patternCanvas.getContext('2d');
-  let pattern;
 
-  switch (shape) {
+  switch (shapeType) {
     case 'circle':
-      pattern = circle;
+      shape = circle;
       break;
     case 'diamond':
-      pattern = diamond;
+      shape = diamond;
       break;
     case 'triangle':
-      pattern = triangle;
+      shape = triangle;
       break;
     case 'triangle-inverted':
-      pattern = triangleInverted;
+      shape = triangleInverted;
       break;
     case 'line-horizontal':
-      pattern = lineHorizontal;
+      shape = lineHorizontal;
       break;
     case 'line-vertical':
-      pattern = lineVertical;
+      shape = lineVertical;
       break;
     case 'line-diagonal-lr':
-      pattern = lineDiagonalLeftToRight;
+      shape = lineDiagonalLeftToRight;
       break;
     case 'line-diagonal-rl':
-      pattern = lineDiagonalRightToLeft;
+      shape = lineDiagonalRightToLeft;
       break;
     case 'zigzag-horizontal':
-      pattern = zigzagHorizontal;
+      shape = zigzagHorizontal;
       break;
     case 'zigzag-vertical':
-      pattern = zigzagVertical;
+      shape = zigzagVertical;
       break;
     default:
-      pattern = square;
+      shape = square;
   }
 
   let outerSize = size * 2;
 
-  // create a canvas to hold the pattern
   patternCanvas.width = outerSize;
   patternCanvas.height = outerSize;
 
-  // create coloured background rect
   patternContext.fillStyle = backgroundColor;
   patternContext.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
 
-  // create pattern overlay rect
-  pattern = patternContext.createPattern(pattern.call(this, size), 'repeat');
+  pattern = patternContext.createPattern(shape.call(this, size), 'repeat');
   patternContext.fillStyle = pattern;
   patternContext.fillRect(0, 0, outerSize, outerSize);
-
 
   return patternContext.createPattern(patternCanvas, 'repeat');
 }
