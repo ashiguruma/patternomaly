@@ -28,7 +28,6 @@ export function circle (diameter) {
   let shape = generateShape(diameter);
 
   let radius = diameter / 2;
-  let offset = radius;
 
   shape.context.beginPath();
   shape.context.fillStyle = 'rgba(255, 255, 255, 0.4)';
@@ -44,16 +43,6 @@ export function diamond (width) {
   let shape = generateShape(width);
   let canvasWidth = shape.canvas.width;
   let canvasHeight = shape.canvas.height;
-  let shapeWidth = Math.sqrt(Math.pow(width, 2) / 2) / 2;
-  let shapeHeight = shapeWidth;
-
-  // shape.context.translate(shape.canvas.width / 2, shape.canvas.height / 2);
-  // shape.context.rotate(0.785);
-  // shape.context.translate((width / 2) * -1, (height / 2) * -1);
-  // shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
-  //
-  // shape.context.fillRect((shape.canvas.width / 2.5) * -1, (shape.canvas.height / 2.5) * -1, width, height);
-  // // shape.context.fillRect(width, height, width, height);
 
   shape.context.beginPath();
   shape.context.fillStyle = 'rgba(255, 255, 255, 0.5)';
