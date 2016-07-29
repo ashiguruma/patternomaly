@@ -188,11 +188,34 @@ export function triangleInverted (size) {
   shape.context.beginPath();
   shape.context.translate(size * 2, size * 2);
   shape.context.rotate(3.14);
-  shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
-  shape.context.moveTo(size, size * 0.5);
-  shape.context.lineTo(size * 1.5, size * 1.5);
-  shape.context.lineTo(size * 0.5, size * 1.5);
-  shape.context.lineTo(size, size * 0.5);
+
+  shape.context.fillStyle = 'rgba(255, 255, 255, 0.5)';
+
+  shape.context.moveTo(size / 2, 0);
+  shape.context.lineTo(size, size);
+  shape.context.lineTo(0, size);
+  shape.context.lineTo(size / 2, 0);
+
+  shape.context.moveTo(size, size);
+  shape.context.lineTo(size * 1.5, 0);
+  shape.context.lineTo(size * 2, size);
+  shape.context.lineTo(size, size);
+
+  shape.context.moveTo(size * 2, size);
+  shape.context.lineTo(size * 2, size * 2);
+  shape.context.lineTo(size * 1.5, size * 2);
+  shape.context.lineTo(size * 2, size);
+
+  shape.context.moveTo(size, size);
+  shape.context.lineTo(size * 1.5, size * 2);
+  shape.context.lineTo(size / 2, size * 2);
+  shape.context.lineTo(size, size);
+
+  shape.context.moveTo(0, size);
+  shape.context.lineTo(size / 2, size * 2);
+  shape.context.lineTo(0, size * 2);
+  shape.context.lineTo(0, size);
+
   shape.context.fill();
 
   return shape.canvas;
