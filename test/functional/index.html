@@ -7,17 +7,74 @@
     <script src="Chart.js" charset="utf-8"></script>
   </head>
   <body onload="load();">
-    <canvas id="canvas" width="300" height="300"></canvas>
+    <canvas id="bar" width="300" height="200"></canvas>
+    <canvas id="doughnut" width="300" height="200"></canvas>
     <script src="../../dist/patterns.js" charset="utf-8"></script>
     <script>
     let load = function() {
-      var canvas = document.getElementById("canvas")
-      var context = canvas.getContext('2d');
+      var barCanvas = document.getElementById("bar")
+      var barContext = barCanvas.getContext('2d');
 
-      var data = {
-        label: 'Bar Chart',
+      var barData = {
+        // label: 'Bar Chart',
         datasets: [{
-          label: 'Bar Chart',
+          data: [
+            300, 50, 100, 210, 140,
+            56, 80, 260, 210, 130,
+            283
+          ],
+          // backgroundColor: [
+          //   pattern.draw('square', '#1f77b4'),
+          //   pattern.draw('circle', '#ff7f0e'),
+          //   pattern.draw('diamond', '#2ca02c'),
+          //   pattern.draw('line-horizontal', '#d62728'),
+          //   pattern.draw('line-vertical', '#9467bd'),
+          //   pattern.draw('line-diagonal-lr', '#8c564b'),
+          //   pattern.draw('line-diagonal-rl', '#e377c2'),
+          //   pattern.draw('triangle', '#7f7f7f'),
+          //   pattern.draw('triangle-inverted', '#bcbd22'),
+          //   pattern.draw('zigzag-horizontal', '#17becf'),
+          //   pattern.draw('zigzag-vertical', '#3366cc')
+          // ],
+          backgroundColor: pattern.draw('square', '#1f77b4'),
+          label: 'Person One'
+          // hoverBackgroundColor: [chartContext.createPattern(highlightPatternCanvas, 'repeat'), "#5AD3D1", "#FFC870"]
+        }, {
+          data: [
+            423, 32, 156, 20, 292,
+            99, 70, 62, 256, 109,
+            426
+          ],
+          backgroundColor: pattern.draw('circle', '#ff7f0e'),
+          label: 'Person Two'
+          // hoverBackgroundColor: [chartContext.createPattern(highlightPatternCanvas, 'repeat'), "#5AD3D1", "#FFC870"]
+        }],
+        labels: [
+          'One', 'Two', 'Three', 'Four', 'Five',
+          'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+          'Eleven'
+        ]
+      };
+
+      new Chart(barContext, {
+        type: 'bar',
+        data: barData,
+        options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+        }
+      });
+
+      var doughnutCanvas = document.getElementById("doughnut")
+      var doughnutContext = doughnutCanvas.getContext('2d');
+
+      var doughnutData = {
+        datasets: [{
           data: [
             300, 50, 100, 210, 140,
             56, 80, 260, 210, 130,
@@ -35,8 +92,7 @@
             pattern.draw('triangle-inverted', '#bcbd22'),
             pattern.draw('zigzag-horizontal', '#17becf'),
             pattern.draw('zigzag-vertical', '#3366cc')
-          ],
-          // hoverBackgroundColor: [chartContext.createPattern(highlightPatternCanvas, 'repeat'), "#5AD3D1", "#FFC870"]
+          ]
         }],
         labels: [
           'One', 'Two', 'Three', 'Four', 'Five',
@@ -45,18 +101,9 @@
         ]
       };
 
-      new Chart(context, {
-        type: 'bar',
-        data: data,
-        options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
-          }
-        }
+      new Chart(doughnutContext, {
+        type: 'doughnut',
+        data: doughnutData
       });
     };
     </script>
