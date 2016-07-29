@@ -91,8 +91,9 @@ export function lineHorizontal (width) {
   let thickness = width / 4;
   let shape = generateShape(width);
 
-  shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.fillStyle = 'rgba(255, 255, 255, 0.5)';
   shape.context.fillRect(0, 0, width, thickness);
+  shape.context.fillRect(0, thickness * 2, width, thickness);
 
   return shape.canvas;
 }
@@ -101,8 +102,9 @@ export function lineVertical (width) {
   let thickness = width / 4;
   let shape = generateShape(width);
 
-  shape.context.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  shape.context.fillStyle = 'rgba(255, 255, 255, 0.5)';
   shape.context.fillRect(0, 0, thickness, width);
+  shape.context.fillRect(thickness * 2, 0, thickness, width);
 
   return shape.canvas;
 }
