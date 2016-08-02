@@ -1,53 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <title>Canvas Pattern Generator</title>
 
-    <script src="Chart.js" charset="utf-8"></script>
+    <script src='Chart.js' charset='utf-8'></script>
   </head>
-  <body onload="load();">
-    <canvas id="bar" width="300" height="200"></canvas>
-    <canvas id="doughnut" width="300" height="200"></canvas>
-    <script src="../../dist/patterns.js" charset="utf-8"></script>
+  <body onload='load();'>
+    <canvas id='bar' width='300' height='200'></canvas>
+    <canvas id='doughnut' width='300' height='200'></canvas>
+    <canvas id='polar' width='300' height='200'></canvas>
+    <canvas id='bubble' width='300' height='200'></canvas>
+
+    <script src='../../dist/patterns.js' charset='utf-8'></script>
     <script>
     let load = function() {
-      var barCanvas = document.getElementById("bar")
+      var barCanvas = document.getElementById('bar');
       var barContext = barCanvas.getContext('2d');
 
-      var barData = {
-        // label: 'Bar Chart',
+      var multipleDatasets = {
         datasets: [{
           data: [
             300, 50, 100, 210, 140,
             56, 80, 260, 210, 130,
             283
           ],
-          // backgroundColor: [
-          //   pattern.draw('square', '#1f77b4'),
-          //   pattern.draw('circle', '#ff7f0e'),
-          //   pattern.draw('diamond', '#2ca02c'),
-          //   pattern.draw('line-horizontal', '#d62728'),
-          //   pattern.draw('line-vertical', '#9467bd'),
-          //   pattern.draw('line-diagonal-lr', '#8c564b'),
-          //   pattern.draw('line-diagonal-rl', '#e377c2'),
-          //   pattern.draw('triangle', '#7f7f7f'),
-          //   pattern.draw('triangle-inverted', '#bcbd22'),
-          //   pattern.draw('zigzag-horizontal', '#17becf'),
-          //   pattern.draw('zigzag-vertical', '#3366cc')
-          // ],
           backgroundColor: pattern.draw('square', '#1f77b4'),
           label: 'Person One'
-          // hoverBackgroundColor: [chartContext.createPattern(highlightPatternCanvas, 'repeat'), "#5AD3D1", "#FFC870"]
         }, {
           data: [
             423, 32, 156, 20, 292,
             99, 70, 62, 256, 109,
             426
           ],
-          backgroundColor: pattern.draw('circle', '#ff7f0e'),
+          backgroundColor: pattern.draw('circle', '#3366cc'),
           label: 'Person Two'
-          // hoverBackgroundColor: [chartContext.createPattern(highlightPatternCanvas, 'repeat'), "#5AD3D1", "#FFC870"]
+          // hoverBackgroundColor: [chartContext.createPattern(highlightPatternCanvas, 'repeat'), '#5AD3D1', '#FFC870']
         }],
         labels: [
           'One', 'Two', 'Three', 'Four', 'Five',
@@ -58,7 +46,7 @@
 
       new Chart(barContext, {
         type: 'bar',
-        data: barData,
+        data: multipleDatasets,
         options: {
           scales: {
               yAxes: [{
@@ -70,10 +58,10 @@
         }
       });
 
-      var doughnutCanvas = document.getElementById("doughnut")
+      var doughnutCanvas = document.getElementById('doughnut')
       var doughnutContext = doughnutCanvas.getContext('2d');
 
-      var doughnutData = {
+      var singleDataset = {
         datasets: [{
           data: [
             300, 50, 100, 210, 140,
@@ -82,15 +70,15 @@
           ],
           backgroundColor: [
             pattern.draw('square', '#1f77b4'),
+            pattern.draw('line-diagonal-rl', '#e377c2'),
             pattern.draw('circle', '#ff7f0e'),
             pattern.draw('diamond', '#2ca02c'),
-            pattern.draw('line-horizontal', '#d62728'),
-            pattern.draw('line-vertical', '#9467bd'),
-            pattern.draw('line-diagonal-lr', '#8c564b'),
-            pattern.draw('line-diagonal-rl', '#e377c2'),
-            pattern.draw('triangle', '#7f7f7f'),
             pattern.draw('triangle-inverted', '#bcbd22'),
+            pattern.draw('line-horizontal', '#d62728'),
             pattern.draw('zigzag-horizontal', '#17becf'),
+            pattern.draw('line-vertical', '#9467bd'),
+            pattern.draw('triangle', '#7f7f7f'),
+            pattern.draw('line-diagonal-lr', '#8c564b'),
             pattern.draw('zigzag-vertical', '#3366cc')
           ]
         }],
@@ -103,7 +91,54 @@
 
       new Chart(doughnutContext, {
         type: 'doughnut',
-        data: doughnutData
+        data: singleDataset
+      });
+
+      var polarCanvas = document.getElementById('polar');
+      var polarContext = polarCanvas.getContext('2d');
+
+      new Chart(polarContext, {
+          type: 'polarArea',
+          data: singleDataset
+      });
+
+      var bubbleDatasets = {
+        datasets: [{
+          data: [
+            {x: 300, y: 50, r: 21},
+            {x: 100, y: 45, r: 12},
+            {x: 210, y: 140, r: 27},
+            {x: 56, y: 80, r: 16},
+            {x: 260, y: 210, r: 10},
+            {x: 130, y: 283, r: 34}
+          ],
+          backgroundColor: pattern.draw('square', '#1f77b4'),
+          label: 'Person One'
+        }, {
+          data: [
+            {x:423, y: 32, r: 23},
+            {x:156, y: 20, r: 10},
+            {x:292, y: 99, r: 28},
+            {x:70, y: 62, r: 15},
+            {x:256, y: 109, r: 19},
+            {x:426, y: 348, r: 21}
+          ],
+          backgroundColor: pattern.draw('circle', '#3366cc'),
+          label: 'Person Two'
+        }],
+        labels: [
+          'One', 'Two', 'Three', 'Four', 'Five',
+          'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+          'Eleven'
+        ]
+      };
+
+      var bubbleCanvas = document.getElementById('bubble');
+      var bubbleContext = bubbleCanvas.getContext('2d');
+
+      new Chart(bubbleContext, {
+          type: 'bubble',
+          data: bubbleDatasets
       });
     };
     </script>
