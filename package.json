@@ -1,7 +1,7 @@
 {
-  "name": "canvas-patterns",
+  "name": "patternomaly",
   "version": "1.0.0",
-  "description": "Easily generate CanvasPattern objects for use in data graphics.",
+  "description": "Easily generate patterns for use in data graphics",
   "main": "dist/patterns.js",
   "browser": "dist/patterns.js",
   "jsnext:main": "index.js",
@@ -30,6 +30,20 @@
     "test:watch": "watch 'npm test' src/ test/",
     "lint": "eslint src/ test/"
   },
-  "author": "",
+  "author": {
+    "name": "Tom Loudon",
+    "url": "http://betweentwobrackets.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashiguruma/patternomaly.git"
+  },
+  "keywords": [
+    "pattern",
+    "canvas",
+    "colorblind",
+    "data",
+    "graphics"
+  ],
   "license": "MIT"
 }
