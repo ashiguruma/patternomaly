@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Canvas Pattern Generator</title>
+
+    <style>
+    canvas {
+      float: left;
+    }
+    canvas:first-of-type {
+      margin-right: 50px;
+    }
+    </style>
+
+    <script src='Chart.js' charset='utf-8'></script>
+  </head>
+  <body onload='load();'>
+    <canvas id='doughnut' width='300' height='300'></canvas>
+    <canvas id='doughnut2' width='300' height='300'></canvas>
+
+    <script src='../../dist/patterns.js' charset='utf-8'></script>
+    <script>
+    var load = function() {
+      var doughnutDataset = {
+        datasets: [{
+          data: [
+            300, 50, 100, 210, 140,
+            56, 80, 260
+          ],
+          backgroundColor: [
+            '#1f77b4',
+            '#ff7f0e',
+            '#2ca02c',
+            '#d62728',
+            '#9467bd',
+            '#8c564b',
+            '#e377c2',
+            '#7f7f7f',
+          ]
+        }],
+        labels: [
+          'Writing Code', 'Eating', 'Making coffee', 'Planning', 'Commuting',
+          'Responding to emails', 'Debugging', 'Changing nappies'
+        ]
+      };
+
+      var doughnutCanvas = document.getElementById('doughnut')
+      var doughnutContext = doughnutCanvas.getContext('2d');
+
+      new Chart(doughnutContext, {
+        type: 'doughnut',
+        data: doughnutDataset,
+        options: {
+          responsive: false
+        }
+      });
+
+      var doughnut2Dataset = {
+        datasets: [{
+          data: [
+            300, 50, 100, 210, 140,
+            56, 80, 260
+          ],
+          backgroundColor: [
+            pattern.draw('square', '#1f77b4'),
+            pattern.draw('circle', '#ff7f0e'),
+            pattern.draw('triangle', '#2ca02c'),
+            pattern.draw('line-horizontal', '#d62728'),
+            pattern.draw('diamond', '#9467bd'),
+            pattern.draw('zigzag-vertical', '#8c564b'),
+            pattern.draw('triangle-inverted', '#e377c2'),
+            pattern.draw('line-vertical', '#7f7f7f'),
+          ]
+        }],
+        labels: [
+          'Writing Code', 'Eating', 'Making coffee', 'Planning', 'Commuting',
+          'Responding to emails', 'Debugging', 'Changing nappies'
+        ]
+      };
+
+      var doughnut2Canvas = document.getElementById('doughnut2')
+      var doughnut2Context = doughnut2Canvas.getContext('2d');
+
+      new Chart(doughnut2Context, {
+        type: 'doughnut',
+        data: doughnut2Dataset,
+        options: {
+          responsive: false
+        }
+      });
+
+    };
+    </script>
+  </body>
+</html>
