@@ -1,11 +1,13 @@
-import test from 'tape';
+var test = require('tape');
+var pattern = require('../../');
+var jsdom = require('jsdom');
 
-import pattern from '../../src/patterns';
+global.document = jsdom.jsdom('<html></html>');
 
-test('pattern returns a canvas pattern', (t) => {
+test('pattern returns a canvas pattern', function (t) {
   t.plan(1);
 
-  let testPattern = pattern();
+  var testPattern = pattern.draw();
 
   t.equal(testPattern.toString(), '[object CanvasPattern]');
 });
