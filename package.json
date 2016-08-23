@@ -26,7 +26,7 @@
   "scripts": {
     "build": "rollup -c",
     "build:watch": "watch 'npm run build' src/ test/",
-    "test": "tape test/unit/**/*.js | faucet",
+    "test": "npm run build && tape test/unit/**/*.js | faucet",
     "test:watch": "watch 'npm test' src/ test/",
     "lint": "eslint src/ test/"
   },

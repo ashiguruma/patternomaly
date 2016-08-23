@@ -12,16 +12,56 @@ import {
   zigzagVertical
 } from './shapes';
 
-function draw (
+export default function draw (
   shapeType = 'square',
   backgroundColor = 'rgba(100, 100, 100, 0.7)',
   patternColor = 'rgba(255, 255, 255, 0.7)',
   size = 20
 ) {
-  let shape;
-  let pattern;
+  let outerSize = size * 2;
   let patternCanvas = document.createElement('canvas');
   let patternContext = patternCanvas.getContext('2d');
+  let shape = getShape(shapeType);
+  let pattern;
+
+  patternCanvas.width = outerSize;
+  patternCanvas.height = outerSize;
+
+  patternContext.fillStyle = backgroundColor;
+  patternContext.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
+
+  pattern = patternContext.createPattern(shape.call(this, size), 'repeat');
+  patternContext.fillStyle = pattern;
+  patternContext.fillRect(0, 0, outerSize, outerSize);
+
+  return patternContext.createPattern(patternCanvas, 'repeat');
+}
+
+export function generate(colorList) {
+  return colorList.map((color) => {
+    return draw('', color);
+  });
+}
+
+function getShape(shapeType) {
+  const shapeNames = [
+    'circle',
+    'diamond',
+    'triangle',
+    'triangle-inverted',
+    'line-horizontal',
+    'line-vertical',
+    'line-diagonal-lr',
+    'line-diagonal-rl',
+    'zigzag-horizontal',
+    'zigzag-vertical'
+  ];
+  let shape;
+
+  if (shapeType === '') {
+    const randomIndex = Math.round(Math.random() * shapeNames.length) + 1;
+    shapeType = shapeNames[randomIndex];
+  }
 
   switch (shapeType) {
     case 'circle':
@@ -58,19 +98,5 @@ function draw (
       shape = square;
   }
 
-  let outerSize = size * 2;
-
-  patternCanvas.width = outerSize;
-  patternCanvas.height = outerSize;
-
-  patternContext.fillStyle = backgroundColor;
-  patternContext.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
-
-  pattern = patternContext.createPattern(shape.call(this, size), 'repeat');
-  patternContext.fillStyle = pattern;
-  patternContext.fillRect(0, 0, outerSize, outerSize);
-
-  return patternContext.createPattern(patternCanvas, 'repeat');
+  return shape;
 }
-
-export default draw;

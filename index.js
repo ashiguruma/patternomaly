@@ -1,1 +1,4 @@
-export { default as draw } from './src/patterns';
+export {
+  default as draw,
+  generate
+} from './src/patterns';

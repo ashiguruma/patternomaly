@@ -4,12 +4,27 @@
     <meta charset='utf-8'>
     <title>Canvas Pattern Generator</title>
 
+    <style>
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+    </style>
     <script src='Chart.js' charset='utf-8'></script>
   </head>
   <body onload='load();'>
+    <h3>Multiple Dataset Bar Chart</h3>
     <canvas id='bar' width='300' height='200'></canvas>
+
+    <h3>Doughnut (fixed patterns)</h3>
     <canvas id='doughnut' width='300' height='200'></canvas>
+
+    <h3>Doughnut (auto-generated patterns)</h3>
+    <canvas id='doughnut-auto' width='300' height='200'></canvas>
+
+    <h3>Polar (fixed patterns)</h3>
     <canvas id='polar' width='300' height='200'></canvas>
+
+    <h3>Multiple Dataset Bubble Chart (similar colors)</h3>
     <canvas id='bubble' width='300' height='200'></canvas>
 
     <script src='../../dist/patterns.js' charset='utf-8'></script>
@@ -83,7 +98,7 @@
           ]
         }],
         labels: [
-          'One', 'Two', 'Three', 'Four', 'Five',
+          'One1', 'Two', 'Three', 'Four', 'Five',
           'Six', 'Seven', 'Eight', 'Nine', 'Ten',
           'Eleven'
         ]
@@ -92,6 +107,42 @@
       new Chart(doughnutContext, {
         type: 'doughnut',
         data: singleDataset
+      });
+
+      var doughnutAutoCanvas = document.getElementById('doughnut-auto')
+      var doughnutAutoContext = doughnutAutoCanvas.getContext('2d');
+
+      var singleAutoDataset = {
+        datasets: [{
+          data: [
+            300, 50, 100, 210, 140,
+            56, 80, 260, 210, 130,
+            283
+          ],
+          backgroundColor: pattern.generate([
+            '#1f77b4',
+            '#e377c2',
+            '#ff7f0e',
+            '#2ca02c',
+            '#bcbd22',
+            '#d62728',
+            '#17becf',
+            '#9467bd',
+            '#7f7f7f',
+            '#8c564b',
+            '#3366cc'
+          ])
+        }],
+        labels: [
+          'One', 'Two', 'Three', 'Four', 'Five',
+          'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+          'Eleven'
+        ]
+      };
+
+      new Chart(doughnutAutoContext, {
+        type: 'doughnut',
+        data: singleAutoDataset
       });
 
       var polarCanvas = document.getElementById('polar');
