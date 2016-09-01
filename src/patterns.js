@@ -1,16 +1,4 @@
-import {
-  square,
-  circle,
-  diamond,
-  triangle,
-  triangleInverted,
-  lineHorizontal,
-  lineVertical,
-  lineDiagonalLeftToRight,
-  lineDiagonalRightToLeft,
-  zigzagHorizontal,
-  zigzagVertical
-} from './shapes';
+import { default as shapes } from './shapes';
 
 export default function draw (
   shapeType = 'square',
@@ -21,8 +9,8 @@ export default function draw (
   let outerSize = size * 2;
   let patternCanvas = document.createElement('canvas');
   let patternContext = patternCanvas.getContext('2d');
-  let shape = getShape(shapeType);
-  let pattern;
+  let shape = shapes[shapeType];
+  let pattern, patternFill;
 
   patternCanvas.width = outerSize;
   patternCanvas.height = outerSize;
@@ -30,73 +18,35 @@ export default function draw (
   patternContext.fillStyle = backgroundColor;
   patternContext.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
 
-  pattern = patternContext.createPattern(shape.call(this, size), 'repeat');
+  pattern = patternContext.createPattern(shape.call(shape, size), 'repeat');
   patternContext.fillStyle = pattern;
   patternContext.fillRect(0, 0, outerSize, outerSize);
 
-  return patternContext.createPattern(patternCanvas, 'repeat');
+  patternFill = patternContext.createPattern(patternCanvas, 'repeat');
+  patternFill.shapeType = shapeType;
+
+  return patternFill;
 }
 
 export function generate(colorList) {
+  let previousShapeType = null;
+
   return colorList.map((color) => {
-    return draw('', color);
+    const shapeType = getRandomShape(previousShapeType);
+    previousShapeType = shapeType;
+
+    return draw(shapeType, color);
   });
 }
 
-function getShape(shapeType) {
-  const shapeNames = [
-    'circle',
-    'diamond',
-    'triangle',
-    'triangle-inverted',
-    'line-horizontal',
-    'line-vertical',
-    'line-diagonal-lr',
-    'line-diagonal-rl',
-    'zigzag-horizontal',
-    'zigzag-vertical'
-  ];
-  let shape;
+function getRandomShape(excludedShapeType) {
+  const shapesList = Object.keys(shapes);
 
-  if (shapeType === '') {
-    const randomIndex = Math.round(Math.random() * shapeNames.length) + 1;
-    shapeType = shapeNames[randomIndex];
+  if (excludedShapeType !== null) {
+    shapesList.splice(shapesList.indexOf(excludedShapeType), 1);
   }
 
-  switch (shapeType) {
-    case 'circle':
-      shape = circle;
-      break;
-    case 'diamond':
-      shape = diamond;
-      break;
-    case 'triangle':
-      shape = triangle;
-      break;
-    case 'triangle-inverted':
-      shape = triangleInverted;
-      break;
-    case 'line-horizontal':
-      shape = lineHorizontal;
-      break;
-    case 'line-vertical':
-      shape = lineVertical;
-      break;
-    case 'line-diagonal-lr':
-      shape = lineDiagonalLeftToRight;
-      break;
-    case 'line-diagonal-rl':
-      shape = lineDiagonalRightToLeft;
-      break;
-    case 'zigzag-horizontal':
-      shape = zigzagHorizontal;
-      break;
-    case 'zigzag-vertical':
-      shape = zigzagVertical;
-      break;
-    default:
-      shape = square;
-  }
+  const randomIndex = Math.floor(Math.random() * shapesList.length);
 
-  return shape;
+  return shapesList[randomIndex];
 }

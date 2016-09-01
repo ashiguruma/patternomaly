@@ -24,7 +24,6 @@ export function square (width) {
 
 export function circle (diameter) {
   let shape = generateShape(diameter);
-
   let radius = diameter / 2;
 
   shape.context.beginPath();
@@ -248,3 +247,17 @@ export function zigzagHorizontal (width) {
 
   return shape.canvas;
 }
+
+export default {
+  'square': square,
+  'circle': circle,
+  'diamond': diamond,
+  'triangle': triangle,
+  'triangle-inverted': triangleInverted,
+  'line-horizontal': lineHorizontal,
+  'line-vertical': lineVertical,
+  'line-diagonal-lr': lineDiagonalLeftToRight,
+  'line-diagonal-rl': lineDiagonalRightToLeft,
+  'zigzag-vertical': zigzagHorizontal,
+  'zigzag-horizontal': zigzagVertical
+};
