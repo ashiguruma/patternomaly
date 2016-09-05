@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Canvas Pattern Generator</title>
+
+    <style>
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      canvas {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="patterns" width="1000" height="1000"></canvas>
+
+    <script>
+    function weave () {
+      let weaveCanvas = document.createElement('canvas');
+      let weaveContext = weaveCanvas.getContext('2d');
+
+      weaveCanvas.width = 20;
+      weaveCanvas.height = 20;
+
+      weaveContext.beginPath();
+      weaveContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      weaveContext.lineWidth = 2;
+
+      weaveContext.moveTo(5, 0);
+      weaveContext.lineTo(5, 10);
+      weaveContext.moveTo(0, 5);
+      weaveContext.lineTo(10, 5);
+      weaveContext.stroke();
+
+      weaveContext.moveTo(15, 10);
+      weaveContext.lineTo(15, 20);
+      weaveContext.moveTo(10, 15);
+      weaveContext.lineTo(20, 15);
+      weaveContext.stroke();
+
+      return weaveCanvas;
+    }
+
+    function square () {
+      let squareCanvas = document.createElement('canvas');
+      let squareContext = squareCanvas.getContext('2d');
+
+      squareCanvas.width = 20;
+      squareCanvas.height = 20;
+
+      squareContext.fillStyle = 'rgba(0, 0, 0, 1)';
+      squareContext.fillRect(0, 0, 10, 10);
+      squareContext.fillRect(10, 10, 10, 10);
+
+      return squareCanvas
+    }
+
+    const canvas = document.getElementById('patterns');
+    const context = canvas.getContext('2d');
+
+    const weavePattern = context.createPattern(weave(), 'repeat');
+    const squarePattern = context.createPattern(square(), 'repeat');
+
+    context.fillStyle = weavePattern;
+    context.fillRect(0, 0, 100, 100);
+
+    context.fillStyle = squarePattern;
+    context.fillRect(110, 0, 100, 100);
+    </script>
+  </body>
+</html>
