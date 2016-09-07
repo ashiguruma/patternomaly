@@ -18,6 +18,86 @@
     <canvas id="patterns" width="1000" height="1000"></canvas>
 
     <script>
+    function plus () {
+      let plusCanvas = document.createElement('canvas');
+      let plusContext = plusCanvas.getContext('2d');
+
+      plusCanvas.width = 20;
+      plusCanvas.height = 20;
+
+      plusContext.beginPath();
+
+      plusContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      plusContext.lineWidth = 2;
+
+      plusContext.moveTo(5, 0);
+      plusContext.lineTo(5, 10);
+      plusContext.moveTo(0, 5);
+      plusContext.lineTo(10, 5);
+      plusContext.stroke();
+
+      plusContext.moveTo(15, 10);
+      plusContext.lineTo(15, 20);
+      plusContext.moveTo(10, 15);
+      plusContext.lineTo(20, 15);
+      plusContext.stroke();
+
+      return plusCanvas;
+    }
+
+    function cross () {
+      let crossCanvas = document.createElement('canvas');
+      let crossContext = crossCanvas.getContext('2d');
+
+      crossCanvas.width = 20;
+      crossCanvas.height = 20;
+
+      crossContext.beginPath();
+
+      crossContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      crossContext.lineWidth = 2;
+
+      crossContext.moveTo(1, 1);
+      crossContext.lineTo(9, 9);
+      crossContext.moveTo(1, 9);
+      crossContext.lineTo(9, 1);
+      crossContext.stroke();
+
+      crossContext.moveTo(11, 11);
+      crossContext.lineTo(19, 19);
+      crossContext.moveTo(11, 19);
+      crossContext.lineTo(19, 11);
+      crossContext.stroke();
+
+      return crossCanvas;
+    }
+
+
+    function crossDash () {
+      let crossDashCanvas = document.createElement('canvas');
+      let crossDashContext = crossDashCanvas.getContext('2d');
+
+      crossDashCanvas.width = 20;
+      crossDashCanvas.height = 20;
+
+      crossDashContext.beginPath();
+
+      crossDashContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      crossDashContext.lineWidth = 2;
+
+      crossDashContext.moveTo(1, 1);
+      crossDashContext.lineTo(9, 9);
+      crossDashContext.moveTo(1, 9);
+      crossDashContext.lineTo(9, 1);
+      crossDashContext.stroke();
+
+      crossDashContext.moveTo(11, 11);
+      crossDashContext.lineTo(19, 19);
+      crossDashContext.stroke();
+
+      return crossDashCanvas;
+    }
+
     function weave () {
       let weaveCanvas = document.createElement('canvas');
       let weaveContext = weaveCanvas.getContext('2d');
@@ -26,22 +106,38 @@
       weaveCanvas.height = 20;
 
       weaveContext.beginPath();
+
       weaveContext.strokeStyle = 'rgba(0, 0, 0, 1)';
       weaveContext.lineWidth = 2;
 
-      weaveContext.moveTo(5, 0);
-      weaveContext.lineTo(5, 10);
-      weaveContext.moveTo(0, 5);
-      weaveContext.lineTo(10, 5);
+      weaveContext.moveTo(1, 1);
+      weaveContext.lineTo(9, 9);
       weaveContext.stroke();
 
-      weaveContext.moveTo(15, 10);
-      weaveContext.lineTo(15, 20);
-      weaveContext.moveTo(10, 15);
-      weaveContext.lineTo(20, 15);
+      weaveContext.moveTo(11, 19);
+      weaveContext.lineTo(19, 11);
       weaveContext.stroke();
 
       return weaveCanvas;
+    }
+
+    function line () {
+      let lineCanvas = document.createElement('canvas');
+      let lineContext = lineCanvas.getContext('2d');
+
+      lineCanvas.width = 20;
+      lineCanvas.height = 20;
+
+      lineContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      lineContext.lineWidth = 2;
+
+      lineContext.moveTo(0, 5);
+      lineContext.lineTo(20, 5);
+      lineContext.moveTo(0, 15);
+      lineContext.lineTo(20, 15);
+      lineContext.stroke();
+
+      return lineCanvas;
     }
 
     function square () {
@@ -58,17 +154,79 @@
       return squareCanvas
     }
 
+    function disc () {
+      let discCanvas = document.createElement('canvas');
+      let discContext = discCanvas.getContext('2d');
+
+      discCanvas.width = 20;
+      discCanvas.height = 20;
+
+      discContext.beginPath();
+      discContext.fillStyle = 'rgba(0, 0, 0, 1)';
+      discContext.lineWidth = 1;
+
+      discContext.arc(5, 5, 4, 0, 2 * Math.PI);
+      discContext.moveTo(19, 15)
+      discContext.arc(15, 15, 4, 0, 2 * Math.PI);
+      discContext.fill();
+
+      return discCanvas;
+    }
+
+    function ring () {
+      let ringCanvas = document.createElement('canvas');
+      let ringContext = ringCanvas.getContext('2d');
+
+      ringCanvas.width = 20;
+      ringCanvas.height = 20;
+
+      ringContext.beginPath();
+      ringContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      ringContext.lineWidth = 2;
+
+      ringContext.arc(5, 5, 4, 0, 2 * Math.PI);
+      ringContext.moveTo(19, 15)
+      ringContext.arc(15, 15, 4, 0, 2 * Math.PI);
+      ringContext.stroke();
+
+      return ringCanvas;
+    }
+
     const canvas = document.getElementById('patterns');
     const context = canvas.getContext('2d');
 
+    const plusPattern = context.createPattern(plus(), 'repeat');
+    const crossPattern = context.createPattern(cross(), 'repeat');
+    const crossDashPattern = context.createPattern(crossDash(), 'repeat');
     const weavePattern = context.createPattern(weave(), 'repeat');
+    const linePattern = context.createPattern(line(), 'repeat');
     const squarePattern = context.createPattern(square(), 'repeat');
+    const discPattern = context.createPattern(disc(), 'repeat');
+    const ringPattern = context.createPattern(ring(), 'repeat');
 
-    context.fillStyle = weavePattern;
+    context.fillStyle = plusPattern;
     context.fillRect(0, 0, 100, 100);
 
-    context.fillStyle = squarePattern;
+    context.fillStyle = crossPattern;
     context.fillRect(110, 0, 100, 100);
+
+    context.fillStyle = crossDashPattern;
+    context.fillRect(220, 0, 100, 100);
+
+    context.fillStyle = weavePattern;
+    context.fillRect(330, 0, 100, 100);
+
+    context.fillStyle = linePattern;
+    context.fillRect(440, 0, 100, 100);
+
+    context.fillStyle = squarePattern;
+    context.fillRect(0, 110, 100, 100);
+
+    context.fillStyle = discPattern;
+    context.fillRect(110, 110, 100, 100);
+
+    context.fillStyle = ringPattern;
+    context.fillRect(220, 110, 100, 100);
     </script>
   </body>
 </html>
