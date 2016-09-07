@@ -105,11 +105,6 @@ export function lineDiagonalLeftToRight (width) {
   shape.context.lineWidth = thickness;
   shape.context.moveTo(thickness, -thickness);
   shape.context.lineTo(width + thickness, height - thickness);
-  shape.context.stroke();
-
-  shape.context.beginPath();
-  shape.context.strokeStyle = 'rgba(255, 255, 255, 0.7)';
-  shape.context.lineWidth = thickness;
   shape.context.moveTo(-thickness, thickness);
   shape.context.lineTo(width - thickness, height + thickness);
   shape.context.stroke();
@@ -127,11 +122,6 @@ export function lineDiagonalRightToLeft (width) {
   shape.context.lineWidth = thickness;
   shape.context.moveTo(width + thickness, thickness);
   shape.context.lineTo(thickness, height + thickness);
-  shape.context.stroke();
-
-  shape.context.beginPath();
-  shape.context.strokeStyle = 'rgba(255, 255, 255, 0.7)';
-  shape.context.lineWidth = thickness;
   shape.context.moveTo(width - thickness, -thickness);
   shape.context.lineTo(-thickness, height - thickness);
   shape.context.stroke();
