@@ -98,6 +98,29 @@
       return crossDashCanvas;
     }
 
+    function dotDash () {
+      let dotDashCanvas = document.createElement('canvas');
+      let dotDashContext = dotDashCanvas.getContext('2d');
+
+      dotDashCanvas.width = 20;
+      dotDashCanvas.height = 20;
+
+      dotDashContext.beginPath();
+      dotDashContext.fillStyle = 'rgba(0, 0, 0, 1)';
+
+      dotDashContext.arc(5, 5, 2, 0, 2 * Math.PI);
+      dotDashContext.fill();
+
+      dotDashContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      dotDashContext.lineWidth = 2;
+
+      dotDashContext.moveTo(11, 11);
+      dotDashContext.lineTo(19, 19);
+      dotDashContext.stroke();
+
+      return dotDashCanvas;
+    }
+
     function weave () {
       let weaveCanvas = document.createElement('canvas');
       let weaveContext = weaveCanvas.getContext('2d');
@@ -138,6 +161,115 @@
       lineContext.stroke();
 
       return lineCanvas;
+    }
+
+    function lineVertical () {
+      let lineCanvas = document.createElement('canvas');
+      let lineContext = lineCanvas.getContext('2d');
+
+      lineCanvas.width = 20;
+      lineCanvas.height = 20;
+
+      lineContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      lineContext.lineWidth = 2;
+
+      lineContext.moveTo(5, 0);
+      lineContext.lineTo(5, 20);
+      lineContext.moveTo(15, 0);
+      lineContext.lineTo(15, 20);
+      lineContext.stroke();
+
+      return lineCanvas;
+    }
+
+    function zigzag () {
+      let zigzagCanvas = document.createElement('canvas');
+      let zigzagContext = zigzagCanvas.getContext('2d');
+
+      zigzagCanvas.width = 20;
+      zigzagCanvas.height = 20;
+
+      zigzagContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      zigzagContext.lineWidth = 2;
+      zigzagContext.lineJoin = 'round';
+
+      zigzagContext.moveTo(0, 2);
+      zigzagContext.lineTo(5, 7);
+      zigzagContext.lineTo(10, 2);
+      zigzagContext.lineTo(15, 7);
+      zigzagContext.lineTo(20, 2);
+      zigzagContext.moveTo(0, 12);
+      zigzagContext.lineTo(5, 17);
+      zigzagContext.lineTo(10, 12);
+      zigzagContext.lineTo(15, 17);
+      zigzagContext.lineTo(20, 12);
+      zigzagContext.stroke();
+
+      return zigzagCanvas
+    }
+
+    function zigzagVertical () {
+      let zigzagCanvas = document.createElement('canvas');
+      let zigzagContext = zigzagCanvas.getContext('2d');
+
+      zigzagCanvas.width = 20;
+      zigzagCanvas.height = 20;
+
+      zigzagContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      zigzagContext.lineWidth = 2;
+      zigzagContext.lineJoin = 'round';
+
+      zigzagContext.moveTo(2, 0);
+      zigzagContext.lineTo(7, 5);
+      zigzagContext.lineTo(2, 10);
+      zigzagContext.lineTo(7, 15);
+      zigzagContext.lineTo(2, 20);
+      zigzagContext.moveTo(12, 0);
+      zigzagContext.lineTo(17, 5);
+      zigzagContext.lineTo(12, 10);
+      zigzagContext.lineTo(17, 15);
+      zigzagContext.lineTo(12, 20);
+      zigzagContext.stroke();
+
+      return zigzagCanvas
+    }
+
+    function diagonal  () {
+      let diagonalCanvas = document.createElement('canvas');
+      let diagonalContext = diagonalCanvas.getContext('2d');
+
+      diagonalCanvas.width = 20;
+      diagonalCanvas.height = 20;
+
+      diagonalContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      diagonalContext.lineWidth = 2;
+
+      diagonalContext.moveTo(9, -1);
+      diagonalContext.lineTo(21, 11);
+      diagonalContext.moveTo(-1, 9);
+      diagonalContext.lineTo(11, 21);
+      diagonalContext.stroke();
+
+      return diagonalCanvas;
+    }
+
+    function diagonalRightLeft  () {
+      let diagonalCanvas = document.createElement('canvas');
+      let diagonalContext = diagonalCanvas.getContext('2d');
+
+      diagonalCanvas.width = 20;
+      diagonalCanvas.height = 20;
+
+      diagonalContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      diagonalContext.lineWidth = 2;
+
+      diagonalContext.moveTo(11, -1);
+      diagonalContext.lineTo(-1, 11);
+      diagonalContext.moveTo(21, 9);
+      diagonalContext.lineTo(9, 21);
+      diagonalContext.stroke();
+
+      return diagonalCanvas;
     }
 
     function square () {
@@ -192,17 +324,136 @@
       return ringCanvas;
     }
 
+    function triangle () {
+      let triangleCanvas = document.createElement('canvas');
+      let triangleContext = triangleCanvas.getContext('2d');
+
+      triangleCanvas.width = 20;
+      triangleCanvas.height = 20;
+
+      triangleContext.beginPath();
+      triangleContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      triangleContext.lineWidth = 1.5;
+      triangleContext.lineJoin = 'round';
+
+      triangleContext.moveTo(1, 1);
+      triangleContext.lineTo(9, 1);
+      triangleContext.lineTo(5, 8);
+      triangleContext.closePath();
+      triangleContext.stroke();
+
+      triangleContext.moveTo(11, 18);
+      triangleContext.lineTo(19, 18);
+      triangleContext.lineTo(15, 11);
+      triangleContext.closePath();
+      triangleContext.stroke();
+
+      return triangleCanvas;
+    }
+
+    function triangleVertical () {
+      let triangleCanvas = document.createElement('canvas');
+      let triangleContext = triangleCanvas.getContext('2d');
+
+      triangleCanvas.width = 20;
+      triangleCanvas.height = 20;
+
+      triangleContext.beginPath();
+      triangleContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      triangleContext.lineWidth = 1.5;
+      triangleContext.lineJoin = 'round';
+
+      triangleContext.moveTo(1, 1);
+      triangleContext.lineTo(8, 5);
+      triangleContext.lineTo(1, 9);
+      triangleContext.closePath();
+      triangleContext.stroke();
+
+      triangleContext.moveTo(18, 11);
+      triangleContext.lineTo(18, 19);
+      triangleContext.lineTo(11, 15);
+      triangleContext.closePath();
+      triangleContext.stroke();
+
+      return triangleCanvas;
+    }
+
+    function diamond () {
+      let diamondCanvas = document.createElement('canvas');
+      let diamondContext = diamondCanvas.getContext('2d');
+
+      diamondCanvas.width = 20;
+      diamondCanvas.height = 20;
+
+      diamondContext.beginPath();
+      diamondContext.fillStyle = 'rgba(0, 0, 0, 1)';
+
+      diamondContext.moveTo(5, 0);
+      diamondContext.lineTo(10, 5);
+      diamondContext.lineTo(5, 10);
+      diamondContext.lineTo(0, 5);
+      diamondContext.closePath();
+      diamondContext.fill();
+
+      diamondContext.moveTo(15, 10);
+      diamondContext.lineTo(20, 15);
+      diamondContext.lineTo(15, 20);
+      diamondContext.lineTo(10, 15);
+      diamondContext.closePath();
+      diamondContext.fill();
+
+      return diamondCanvas;
+    }
+
+    function diamondOutline () {
+      let diamondCanvas = document.createElement('canvas');
+      let diamondContext = diamondCanvas.getContext('2d');
+
+      diamondCanvas.width = 20;
+      diamondCanvas.height = 20;
+
+      diamondContext.beginPath();
+      diamondContext.strokeStyle = 'rgba(0, 0, 0, 1)';
+      diamondContext.lineWidth = 1.5;
+
+      diamondContext.moveTo(5, 1);
+      diamondContext.lineTo(9, 5);
+      diamondContext.lineTo(5, 9);
+      diamondContext.lineTo(1, 5);
+      diamondContext.closePath();
+      diamondContext.stroke();
+
+      diamondContext.moveTo(15, 11);
+      diamondContext.lineTo(19, 15);
+      diamondContext.lineTo(15, 19);
+      diamondContext.lineTo(11, 15);
+      diamondContext.closePath();
+      diamondContext.stroke();
+
+      return diamondCanvas;
+    }
+
     const canvas = document.getElementById('patterns');
     const context = canvas.getContext('2d');
 
     const plusPattern = context.createPattern(plus(), 'repeat');
     const crossPattern = context.createPattern(cross(), 'repeat');
     const crossDashPattern = context.createPattern(crossDash(), 'repeat');
+    const dotDashPattern = context.createPattern(dotDash(), 'repeat');
     const weavePattern = context.createPattern(weave(), 'repeat');
     const linePattern = context.createPattern(line(), 'repeat');
+    const lineVerticalPattern = context.createPattern(lineVertical(), 'repeat');
+    const zigzagPattern = context.createPattern(zigzag(), 'repeat');
+    const zigzagVerticalPattern = context.createPattern(zigzagVertical(), 'repeat');
+    const diagonalPattern = context.createPattern(diagonal(), 'repeat');
+    const diagonalRightLeftPattern = context.createPattern(diagonalRightLeft(), 'repeat');
     const squarePattern = context.createPattern(square(), 'repeat');
     const discPattern = context.createPattern(disc(), 'repeat');
     const ringPattern = context.createPattern(ring(), 'repeat');
+    const trianglePattern = context.createPattern(triangle(), 'repeat');
+    const triangleVerticalPattern = context.createPattern(triangleVertical(), 'repeat');
+    const diamondPattern = context.createPattern(diamond(), 'repeat');
+    const diamondOutlinePattern = context.createPattern(diamondOutline(), 'repeat');
 
     context.fillStyle = plusPattern;
     context.fillRect(0, 0, 100, 100);
@@ -213,20 +464,50 @@
     context.fillStyle = crossDashPattern;
     context.fillRect(220, 0, 100, 100);
 
-    context.fillStyle = weavePattern;
+    context.fillStyle = dotDashPattern;
     context.fillRect(330, 0, 100, 100);
 
-    context.fillStyle = linePattern;
+    context.fillStyle = weavePattern;
     context.fillRect(440, 0, 100, 100);
 
-    context.fillStyle = squarePattern;
+    context.fillStyle = linePattern;
+    context.fillRect(550, 0, 100, 100);
+
+    context.fillStyle = lineVerticalPattern;
     context.fillRect(0, 110, 100, 100);
 
-    context.fillStyle = discPattern;
+    context.fillStyle = zigzagPattern;
     context.fillRect(110, 110, 100, 100);
 
-    context.fillStyle = ringPattern;
+    context.fillStyle = zigzagVerticalPattern;
     context.fillRect(220, 110, 100, 100);
+
+    context.fillStyle = diagonalPattern;
+    context.fillRect(330, 110, 100, 100);
+
+    context.fillStyle = diagonalRightLeftPattern;
+    context.fillRect(440, 110, 100, 100);
+
+    context.fillStyle = squarePattern;
+    context.fillRect(550, 110, 100, 100);
+
+    context.fillStyle = discPattern;
+    context.fillRect(0, 220, 100, 100);
+
+    context.fillStyle = ringPattern;
+    context.fillRect(110, 220, 100, 100);
+
+    context.fillStyle = trianglePattern;
+    context.fillRect(220, 220, 100, 100);
+
+    context.fillStyle = triangleVerticalPattern;
+    context.fillRect(330, 220, 100, 100);
+
+    context.fillStyle = diamondPattern;
+    context.fillRect(440, 220, 100, 100);
+
+    context.fillStyle = diamondOutlinePattern;
+    context.fillRect(550, 220, 100, 100);
     </script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import { default as shapes } from './shapes';
+import shapes from './shapes/index';
 
 export default function draw (
   shapeType = 'square',
@@ -9,6 +9,7 @@ export default function draw (
   let outerSize = size * 2;
   let patternCanvas = document.createElement('canvas');
   let patternContext = patternCanvas.getContext('2d');
+  // TODO Map deprecated shapes to new shapes here to keep deprecated names out of random selection
   let shape = shapes[shapeType];
   let pattern, patternFill;
 
