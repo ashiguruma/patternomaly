@@ -17,7 +17,16 @@ import triangleVertical from './triangle-vertical';
 import diamond from './diamond';
 import diamondOutline from './diamond-outline';
 
-export default {
+const deprecatedShapes = [
+  'circle',
+  'triangle-inverted',
+  'line-horizontal',
+  'line-diagonal-lr',
+  'line-diagonal-rl',
+  'zigzag-horizontal'
+];
+
+const shapes = {
   'plus': plus,
   'cross': cross,
   'crossDash': crossDash,
@@ -36,7 +45,7 @@ export default {
   'triangle-vertical': triangleVertical,
   'diamond': diamond,
   'diamond-outline': diamondOutline,
-
+  // deprecated shape names
   'circle': disc,
   'triangle-inverted': triangleVertical,
   'line-horizontal': line,
@@ -44,3 +53,23 @@ export default {
   'line-diagonal-rl': diagonalRightLeft,
   'zigzag-horizontal': zigzag
 };
+
+export function getRandomShape(excludedShapeType) {
+  let shapesList = Object.keys(shapes);
+
+  shapesList = shapesList.filter((shape) => {
+    if (deprecatedShapes.indexOf(shape) === -1) {
+      return shape;
+    }
+  });
+
+  if (excludedShapeType !== null) {
+    shapesList.splice(shapesList.indexOf(excludedShapeType), 1);
+  }
+
+  const randomIndex = Math.floor(Math.random() * shapesList.length);
+
+  return shapesList[randomIndex];
+}
+
+export default shapes;

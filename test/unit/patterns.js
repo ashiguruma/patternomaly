@@ -56,3 +56,43 @@ test('a pattern type should not be contiguous', function(t) {
 
   t.ok(notContiguous);
 });
+
+test('deprecated patterns should NOT be included in random selection', function (t) {
+  t.plan(1);
+
+  var deprecatedShapes = [
+    'circle',
+    'triangle-inverted',
+    'line-horizontal',
+    'line-diagonal-lr',
+    'line-diagonal-rl',
+    'zigzag-horizontal'
+  ];
+  var colorList = [];
+  var containsDeprecatedShapes = false;
+  var testPatterns, i;
+
+  // for 100+ colors (10 colors 10 times)
+  for (i = 0; i < 10; i++) {
+    colorList.push(
+      '#1f77b4',
+      '#e377c2',
+      '#ff7f0e',
+      '#2ca02c',
+      '#bcbd22',
+      '#d62728',
+      '#17becf',
+      '#9467bd',
+      '#7f7f7f',
+      '#8c564b'
+    );
+  }
+
+  testPatterns = pattern.generate(colorList);
+
+  containsDeprecatedShapes = testPatterns.some(function (pattern) {
+    return deprecatedShapes.indexOf(pattern.shapeType) >= 0;
+  });
+
+  t.notOk(containsDeprecatedShapes);
+});
