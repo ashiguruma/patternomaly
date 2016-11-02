@@ -4,6 +4,31 @@ var jsdom = require('jsdom');
 
 global.document = jsdom.jsdom('<html></html>');
 
+var COLORS = [
+  '#1f77b4',
+  '#e377c2',
+  '#ff7f0e',
+  '#2ca02c',
+  '#bcbd22',
+  '#d62728',
+  '#17becf',
+  '#9467bd',
+  '#7f7f7f',
+  '#8c564b'
+];
+
+function generateColors (total) {
+  var colorsList = COLORS.slice(0);
+  var colorsTotal = total / COLORS.length;
+  var i;
+
+  for (i = 1; i < colorsTotal; i++) {
+    Array.prototype.push.apply(colorsList, COLORS);
+  }
+
+  return colorsList;
+}
+
 test('pattern returns a canvas pattern', function (t) {
   t.plan(1);
 
@@ -32,29 +57,22 @@ test('generate returns a list of canvas patterns', function (t) {
 test('a pattern type should not be contiguous', function(t) {
   t.plan(1);
 
-  var colorList = [
-    '#1f77b4',
-    '#e377c2',
-    '#ff7f0e',
-    '#2ca02c',
-    '#bcbd22',
-    '#d62728',
-    '#17becf',
-    '#9467bd',
-    '#7f7f7f',
-    '#8c564b',
-    '#3366cc'
-  ];
-  var testPatterns = pattern.generate(colorList);
-  var notContiguous = true;
+  var colorsList = generateColors(100);
+  var testPatterns = pattern.generate(colorsList);
+  var hasContiguousPatterns = false;
 
-  testPatterns.forEach(function (pattern, index) {
-    if (index !== 0) {
-      notContiguous = testPatterns[index-1].shapeType !== pattern.shapeType;
+  // TODO there is no guanrantee this test will fail even when it should
+  // this requires mocking the available shape list. Try again using ES2015
+  // for tests perhaps switching to Mocha
+  hasContiguousPatterns = testPatterns.some(function (pattern, index) {
+    if (index === 0) {
+      return testPatterns[testPatterns.length-1].shapeType === pattern.shapeType;
+    } else {
+      return testPatterns[index-1].shapeType === pattern.shapeType;
     }
   });
 
-  t.ok(notContiguous);
+  t.notOk(hasContiguousPatterns);
 });
 
 test('deprecated patterns should NOT be included in random selection', function (t) {
@@ -68,27 +86,12 @@ test('deprecated patterns should NOT be included in random selection', function 
     'line-diagonal-rl',
     'zigzag-horizontal'
   ];
-  var colorList = [];
   var containsDeprecatedShapes = false;
-  var testPatterns, i;
+  var colorsList, testPatterns;
 
-  // for 100+ colors (10 colors 10 times)
-  for (i = 0; i < 10; i++) {
-    colorList.push(
-      '#1f77b4',
-      '#e377c2',
-      '#ff7f0e',
-      '#2ca02c',
-      '#bcbd22',
-      '#d62728',
-      '#17becf',
-      '#9467bd',
-      '#7f7f7f',
-      '#8c564b'
-    );
-  }
+  colorsList = generateColors(100);
 
-  testPatterns = pattern.generate(colorList);
+  testPatterns = pattern.generate(colorsList);
 
   containsDeprecatedShapes = testPatterns.some(function (pattern) {
     return deprecatedShapes.indexOf(pattern.shapeType) >= 0;

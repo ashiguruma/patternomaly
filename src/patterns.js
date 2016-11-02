@@ -29,11 +29,22 @@ export default function draw (
 }
 
 export function generate(colorList) {
-  let previousShapeType = null;
+  let firstShapeType;
+  let previousShapeType;
 
-  return colorList.map((color) => {
-    const shapeType = getRandomShape(previousShapeType);
-    previousShapeType = shapeType;
+  return colorList.map((color, index, list) => {
+    let shapeType;
+
+    if (index === 0) {
+      shapeType = getRandomShape([]);
+      previousShapeType = shapeType;
+      firstShapeType = previousShapeType;
+    } else if (index === list.length - 1) {
+      shapeType = getRandomShape([previousShapeType, firstShapeType]);
+    } else {
+      shapeType = getRandomShape([previousShapeType]);
+      previousShapeType = shapeType;
+    }
 
     return draw(shapeType, color);
   });

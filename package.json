@@ -28,7 +28,7 @@
     "build:watch": "watch 'npm run build' src/ test/",
     "test": "npm run build && tape test/unit/**/*.js | faucet",
     "test:watch": "watch 'npm test' src/ test/",
-    "lint": "eslint src/ test/"
+    "lint": "eslint src/ test/unit"
   },
   "author": {
     "name": "Tom Loudon",

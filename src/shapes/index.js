@@ -54,7 +54,7 @@ const shapes = {
   'zigzag-horizontal': zigzag
 };
 
-export function getRandomShape(excludedShapeType) {
+export function getRandomShape(excludedShapeTypes) {
   let shapesList = Object.keys(shapes);
 
   shapesList = shapesList.filter((shape) => {
@@ -63,9 +63,9 @@ export function getRandomShape(excludedShapeType) {
     }
   });
 
-  if (excludedShapeType !== null) {
-    shapesList.splice(shapesList.indexOf(excludedShapeType), 1);
-  }
+  excludedShapeTypes.forEach(shapeType => {
+    shapesList.splice(shapesList.indexOf(shapeType), 1);
+  });
 
   const randomIndex = Math.floor(Math.random() * shapesList.length);
 
