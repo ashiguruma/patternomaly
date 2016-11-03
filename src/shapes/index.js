@@ -54,7 +54,7 @@ const shapes = {
   'zigzag-horizontal': zigzag
 };
 
-export function getRandomShape(excludedShapeTypes) {
+export function getRandomShape(excludedShapeTypes = []) {
   let shapesList = Object.keys(shapes);
 
   shapesList = shapesList.filter((shape) => {

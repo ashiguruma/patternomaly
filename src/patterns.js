@@ -1,6 +1,6 @@
 import shapes, { getRandomShape } from './shapes/index';
 
-export default function draw (
+export function draw (
   shapeType = 'square',
   backgroundColor = 'rgba(100, 100, 100, 0.7)',
   patternColor = 'rgba(255, 255, 255, 0.7)',
@@ -36,7 +36,7 @@ export function generate(colorList) {
     let shapeType;
 
     if (index === 0) {
-      shapeType = getRandomShape([]);
+      shapeType = getRandomShape();
       previousShapeType = shapeType;
       firstShapeType = previousShapeType;
     } else if (index === list.length - 1) {
