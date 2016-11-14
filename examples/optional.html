@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Patternomaly Optional</title>
+
+    <style>
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+
+      label[for=pattern-switch] {
+        background-color: #aaa;
+        border-radius: 4px;
+        color: white;
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 10px 10px 10px 8px;
+      }
+    </style>
+    <script src='Chart.js' charset='utf-8'></script>
+    <script src='../dist/patternomaly.js'></script>
+  </head>
+  <body onload='load();'>
+    <label for="pattern-switch">
+      <input type="checkbox" id="pattern-switch">
+      toggle patterns
+    </label>
+
+    <canvas id='donut' width='500' height='400'></canvas>
+
+    <script>
+    var load = function() {
+      var colors = [
+        '#1f77b4', '#e377c2', '#ff7f0e', '#2ca02c', '#bcbd22', '#d62728',
+        '#17becf', '#9467bd', '#7f7f7f', '#8c564b', '#3366cc'
+      ];
+
+      var patterns = pattern.generate(colors);
+
+      var donutCanvas = document.getElementById('donut')
+      var donutContext = donutCanvas.getContext('2d');
+
+      var dataset = {
+        datasets: [{
+          data: [
+            300, 50, 100, 210, 140,
+            56, 80, 260, 210, 130,
+            283
+          ],
+          backgroundColor: colors
+        }],
+        labels: [
+          'One', 'Two', 'Three', 'Four', 'Five',
+          'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+          'Eleven'
+        ]
+      };
+
+      var donut = new Chart(donutContext, {
+        type: 'doughnut',
+        data: dataset,
+        options: {
+          responsive: false
+        }
+      });
+
+      var patternSwitch = document.querySelector('#pattern-switch');
+
+      patternSwitch.addEventListener('change', function (e) {
+        var fill = (e.currentTarget.checked) ? patterns : colors;
+
+        donut.data.datasets[0].backgroundColor = fill;
+
+        donut.update();
+      });
+    };
+    </script>
+  </body>
+</html>
