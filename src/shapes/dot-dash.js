@@ -1,7 +1,7 @@
 import PATTERN_COLOR from './config';
 import generateShape from './generate';
 
-export default function crossDash () {
+export default function dotDash () {
   const shape = generateShape(20);
 
   shape.context.beginPath();

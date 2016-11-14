@@ -1,7 +1,7 @@
 import PATTERN_COLOR from './config';
 import generateShape from './generate';
 
-export default function cross () {
+export default function line () {
   const shape = generateShape(20);
 
   shape.context.strokeStyle = PATTERN_COLOR;
