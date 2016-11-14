@@ -2,9 +2,8 @@
   "name": "patternomaly",
   "version": "1.1.0",
   "description": "Easily generate patterns for use in data graphics",
-  "main": "dist/patterns.js",
-  "browser": "dist/patterns.js",
-  "jsnext:main": "index.js",
+  "main": "dist/patternomaly.js",
+  "jsnext:main": "dist/patternomaly.mjs",
   "scripts": {
     "prebuild": "npm run lint",
     "build": "rollup -c",

@@ -19,7 +19,7 @@
     <canvas id='doughnut' width='300' height='300'></canvas>
     <canvas id='doughnut2' width='300' height='300'></canvas>
 
-    <script src='../dist/patterns.js' charset='utf-8'></script>
+    <script src='../dist/patternomaly.js' charset='utf-8'></script>
     <script>
     var load = function() {
       var doughnutDataset = {
@@ -62,16 +62,16 @@
             300, 50, 100, 210, 140,
             56, 80, 260
           ],
-          backgroundColor: [
-            pattern.draw('square', '#1f77b4'),
-            pattern.draw('circle', '#ff7f0e'),
-            pattern.draw('triangle', '#2ca02c'),
-            pattern.draw('line-horizontal', '#d62728'),
-            pattern.draw('diamond', '#9467bd'),
-            pattern.draw('zigzag-vertical', '#8c564b'),
-            pattern.draw('triangle-inverted', '#e377c2'),
-            pattern.draw('line-vertical', '#7f7f7f'),
-          ]
+          backgroundColor: pattern.generate([
+            '#1f77b4',
+            '#ff7f0e',
+            '#2ca02c',
+            '#d62728',
+            '#9467bd',
+            '#8c564b',
+            '#e377c2',
+            '#7f7f7f',
+          ])
         }],
         labels: [
           'Writing Code', 'Eating', 'Making coffee', 'Planning', 'Commuting',
