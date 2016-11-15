@@ -31,4 +31,4 @@ Generate an array of canvas patterns
 
 In order to provide an alternative view for visually impaired viewers it's a good idea to [provide a patterned alternative](http://betweentwobrackets.com/data-graphics-and-colour-vision/#patternstotherescue).
 
-See the [pattern option example page](patternomaly/examples/optional.html) for a simple implementation of a pattern toggle switch for Chart.js.
+See the [pattern option example page](examples/optional.html) for a simple implementation of a pattern toggle switch for Chart.js.
