@@ -3,36 +3,96 @@
   <head>
     <meta charset="utf-8">
     <title>Canvas Pattern Generator</title>
+    <style>
+    canvas {
+      border: 1px solid #aaa;
+    }
+    </style>
   </head>
   <body>
-    <canvas id="canvas" width="100" height="100"></canvas>
+    <canvas id="canvas" width="400" height="400" style="width: 200px; height: 200px;"></canvas>
     <script>
       var canvas = document.getElementById("canvas")
       var context = canvas.getContext('2d');
-      console.log(context.backingStorePixelRatio);
 
-      canvas.width = 100;
-      canvas.height = 100;
+      var pixelRatio = window.devicePixelRatio;
+      var width = canvas.width;
+      var height = canvas.height;
 
-      var shapeCanvas = document.createElement("canvas")
+      canvas.width = width * pixelRatio;
+      canvas.height = height * pixelRatio;
+
+      // Create a canvas to hold the shape that forms the patternCanvas
+      var shapeCanvas = document.createElement('canvas');
       var shapeContext = shapeCanvas.getContext('2d');
-      shapeCanvas.width = 200;
-      shapeCanvas.height = 200;
 
-      shapeContext.scale(0.5, 0.5);
+      // Set the shape dimensions
+      shapeCanvas.width = 40;
+      shapeCanvas.height = 40;
+
+      // Fill the shape cavas with a background color
+      shapeContext.fillStyle = 'rgba(100, 100, 100, 0.7)';
+      shapeContext.fillRect(0, 0, shapeCanvas.width, shapeCanvas.height);
+
+      // Create and fill the shape
       shapeContext.beginPath();
-      shapeContext.fillStyle = 'rgba(0, 0, 0, 0.7)';
-      shapeContext.arc(200, 200, 200, 0, 2 * Math.PI);
+      shapeContext.fillStyle = 'rgba(255, 255, 255, 0.6)';
+
+      // Draw two discs to form the teselating pattern
+      shapeContext.arc(10, 10, 9, 0, 2 * Math.PI);
+      shapeContext.arc(30, 30, 9, 0, 2 * Math.PI);
       shapeContext.fill();
 
-      var containerCanvas = document.createElement("canvas")
-      var containerContext = containerCanvas.getContext('2d');
+      // Create a pattern from the shape
+      pattern = context.createPattern(shapeCanvas, 'repeat');
 
-      containerContext.scale(0.5, 0.5);
+      // Add the pattern to the pattern canvas over the background color
+      context.fillStyle = pattern;
+      context.fillRect(0, 0, canvas.width, canvas.height);
 
-      containerContext.drawImage(shapeCanvas, 0, 0);
+      context.scale(pixelRatio, pixelRatio);
 
-      context.drawImage(containerCanvas, 0, 0);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+
+      // var pixelRatio = window.devicePixelRatio;
+      // var width = canvas.width;
+      // var height = canvas.height;
+      //
+      // canvas.width = width * pixelRatio;
+      // canvas.height = height * pixelRatio;
+      //
+      // var shapeCanvas = document.createElement("canvas")
+      // var shapeContext = shapeCanvas.getContext('2d');
+      //
+      // shapeCanvas.width = canvas.width;
+      // shapeCanvas.height = canvas.height;
+      //
+      // // Implement the same setup as the pattern lib
+      //
+      // console.log(shapeCanvas.width);
+      //
+      // shapeContext.scale(pixelRatio, pixelRatio);
+      //
+      // // shapeContext.save();
+      //
+      // shapeContext.fillStyle = 'rgba(0, 0, 0, 0.7)';
+      // // shapeContext.scale(pixelRatio, pixelRatio);
+      // shapeContext.arc(200, 200, 100, 0, 2 * Math.PI);
+      // shapeContext.fill();
+      //
+      // // shapeContext.restore();
+      //
+      // context.drawImage(shapeCanvas, 0, 0);
+      //
+      // context.scale(pixelRatio, pixelRatio);
+      //
+      // canvas.style.width = width + 'px';
+      // canvas.style.height = height + 'px';
+      //
+
+
+
     </script>
   </body>
 </html>
