@@ -10,22 +10,15 @@ export function draw (
   let patternCanvas = document.createElement('canvas');
   let patternContext = patternCanvas.getContext('2d');
   let shape = shapes[shapeType];
-  let pattern, patternFill;
+  let pattern;
 
   patternCanvas.width = outerSize;
   patternCanvas.height = outerSize;
 
-  patternContext.fillStyle = backgroundColor;
-  patternContext.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
+  pattern = patternContext.createPattern(shape.call(shape, size, backgroundColor), 'repeat');
+  pattern.shapeType = shapeType;
 
-  pattern = patternContext.createPattern(shape.call(shape, size), 'repeat');
-  patternContext.fillStyle = pattern;
-  patternContext.fillRect(0, 0, outerSize, outerSize);
-
-  patternFill = patternContext.createPattern(patternCanvas, 'repeat');
-  patternFill.shapeType = shapeType;
-
-  return patternFill;
+  return pattern;
 }
 
 export function generate(colorList) {

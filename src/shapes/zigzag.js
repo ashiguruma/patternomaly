@@ -1,8 +1,8 @@
 import PATTERN_COLOR from './config';
 import generateShape from './generate';
 
-export default function zigzag () {
-  const shape = generateShape(20);
+export default function zigzag (size, backgroundColor) {
+  const shape = generateShape(size, backgroundColor);
 
   shape.context.strokeStyle = PATTERN_COLOR;
   shape.context.lineWidth = 2;

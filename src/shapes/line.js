@@ -1,8 +1,8 @@
 import PATTERN_COLOR from './config';
 import generateShape from './generate';
 
-export default function line () {
-  const shape = generateShape(20);
+export default function line (size, backgroundColor) {
+  const shape = generateShape(size, backgroundColor);
 
   shape.context.strokeStyle = PATTERN_COLOR;
   shape.context.lineWidth = 2;

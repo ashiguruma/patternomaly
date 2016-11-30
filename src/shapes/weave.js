@@ -1,8 +1,8 @@
 import PATTERN_COLOR from './config';
 import generateShape from './generate';
 
-export default function weave () {
-  const shape = generateShape(20);
+export default function weave (size, backgroundColor) {
+  const shape = generateShape(size, backgroundColor);
 
   shape.context.beginPath();
   shape.context.strokeStyle = PATTERN_COLOR;
