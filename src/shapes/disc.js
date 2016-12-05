@@ -1,16 +1,19 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Dot from './dot';
 
-export default function disc (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class Disc extends Dot {
+  drawTile() {
+    const halfSize = this._size / 2;
+    const diameter = this._size / 5;
 
-  shape.context.beginPath();
-  shape.context.fillStyle = PATTERN_COLOR;
+    this._context.beginPath();
 
-  shape.context.arc(5, 5, 4, 0, 2 * Math.PI);
-  shape.context.moveTo(19, 15);
-  shape.context.arc(15, 15, 4, 0, 2 * Math.PI);
-  shape.context.fill();
+    this.setFillProps();
 
-  return shape.canvas;
+    this.drawDot(0, 0, diameter);
+    this.drawDot(halfSize, halfSize, diameter);
+
+    this._context.fill();
+
+    return this._canvas;
+  }
 }

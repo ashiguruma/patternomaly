@@ -1,57 +1,67 @@
-import plus from './plus';
-import cross from './cross';
-import crossDash from './cross-dash';
-import dotDash from './dot-dash';
-import weave from './weave';
-import line from './line';
-import lineVertical from './line-vertical';
-import zigzag from './zigzag';
-import zigzagVertical from './zigzag-vertical';
-import diagonal from './diagonal';
-import diagonalRightLeft from './diagonal-right-left';
-import square from './square';
-import disc from './disc';
-import ring from './ring';
-import triangle from './triangle';
-import triangleVertical from './triangle-vertical';
-import diamond from './diamond';
-import diamondOutline from './diamond-outline';
+import Plus from './plus';
+import Cross from './cross';
+import Dash from './dash';
+import CrossDash from './cross-dash';
+import Dot from './dot';
+import DotDash from './dot-dash';
+import Disc from './disc';
+import Ring from './ring';
+import Line from './line';
+import LineVertical from './line-vertical';
+import Weave from './weave';
+import Zigzag from './zigzag';
+import ZigzagVertical from './zigzag-vertical';
+import Diagonal from './diagonal';
+import DiagonalRightLeft from './diagonal-right-left';
+import Square from './square';
+import Box from './box';
+import Triangle from './triangle';
+import TriangleInverted from './triangle-inverted';
+import Diamond from './diamond';
+import DiamondBox from './diamond-box';
 
 const deprecatedShapes = [
   'circle',
-  'triangle-inverted',
+  'triangle-vertical',
   'line-horizontal',
   'line-diagonal-lr',
   'line-diagonal-rl',
-  'zigzag-horizontal'
+  'zigzag-horizontal',
+  'diamond-outline'
 ];
 
 const shapes = {
-  'plus': plus,
-  'cross': cross,
-  'crossDash': crossDash,
-  'dotDash': dotDash,
-  'weave': weave,
-  'line': line,
-  'line-vertical': lineVertical,
-  'zigzag': zigzag,
-  'zigzag-vertical': zigzagVertical,
-  'diagonal': diagonal,
-  'diagnonal-right-left': diagonalRightLeft,
-  'square': square,
-  'disc': disc,
-  'ring': ring,
-  'triangle': triangle,
-  'triangle-vertical': triangleVertical,
-  'diamond': diamond,
-  'diamond-outline': diamondOutline,
+  'plus': Plus,
+  'cross': Cross,
+  'dash': Dash,
+  'cross-dash': CrossDash,
+  'dot': Dot,
+  'dot-dash': DotDash,
+  'disc': Disc,
+  'ring': Ring,
+  'line': Line,
+  'line-vertical': LineVertical,
+  'weave': Weave,
+  'zigzag': Zigzag,
+  'zigzag-vertical': ZigzagVertical,
+  'diagonal': Diagonal,
+  'diagonal-right-left': DiagonalRightLeft,
+  'square': Square,
+  'box': Box,
+  'triangle': Triangle,
+  'triangle-inverted': TriangleInverted,
+  'diamond': Diamond,
+  'diamond-box': DiamondBox,
+
   // deprecated shape names
-  'circle': disc,
-  'triangle-inverted': triangleVertical,
-  'line-horizontal': line,
-  'line-diagonal-lr': diagonal,
-  'line-diagonal-rl': diagonalRightLeft,
-  'zigzag-horizontal': zigzag
+  // TODO replace deprecatedShapes with this then use Object.keys
+  'circle': Disc,
+  'triangle-vertical': TriangleInverted,
+  'line-horizontal': Line,
+  'line-diagonal-lr': Diagonal,
+  'line-diagonal-rl': DiagonalRightLeft,
+  'zigzag-horizontal': Zigzag,
+  'diamond-outline': DiamondBox,
 };
 
 export function getRandomShape(excludedShapeTypes = []) {

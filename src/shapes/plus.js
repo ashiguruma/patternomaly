@@ -1,23 +1,31 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Shape from './shape';
 
-export default function plus (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class Plus extends Shape {
+  drawTile() {
+    const halfSize = this._size / 2;
 
-  shape.context.beginPath();
-  shape.context.strokeStyle = PATTERN_COLOR;
-  shape.context.lineWidth = 2;
+    this._context.beginPath();
 
-  shape.context.moveTo(5, 0);
-  shape.context.lineTo(5, 10);
-  shape.context.moveTo(0, 5);
-  shape.context.lineTo(10, 5);
+    this.setStrokeProps();
 
-  shape.context.moveTo(15, 10);
-  shape.context.lineTo(15, 20);
-  shape.context.moveTo(10, 15);
-  shape.context.lineTo(20, 15);
-  shape.context.stroke();
+    this.drawPlus(0, 0);
+    this.drawPlus(halfSize, halfSize);
 
-  return shape.canvas;
+    this._context.stroke();
+
+    return this._canvas;
+  }
+
+  drawPlus(offsetX = 0, offsetY = 0) {
+    const size = this._size;
+    const halfSize = size / 2;
+    const quarterSize = size / 4;
+
+    this._context.moveTo(quarterSize + offsetX, 0 + offsetY);
+    this._context.lineTo(quarterSize + offsetX, halfSize + offsetY);
+    this._context.moveTo(0 + offsetX, quarterSize + offsetY);
+    this._context.lineTo(halfSize + offsetX, quarterSize + offsetY);
+
+    this._context.closePath();
+  }
 }

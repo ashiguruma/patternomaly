@@ -1,25 +1,30 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Shape from './shape';
 
-export default function triangle (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class Triangle extends Shape {
+  drawTile() {
+    const halfSize = this._size / 2;
 
-  shape.context.beginPath();
-  shape.context.strokeStyle = PATTERN_COLOR;
-  shape.context.lineWidth = 1.5;
-  shape.context.lineJoin = 'round';
+    this._context.beginPath();
 
-  shape.context.moveTo(1, 1);
-  shape.context.lineTo(9, 1);
-  shape.context.lineTo(5, 8);
-  shape.context.closePath();
+    this.setFillProps();
 
-  shape.context.moveTo(11, 18);
-  shape.context.lineTo(19, 18);
-  shape.context.lineTo(15, 11);
-  shape.context.closePath();
+    this.drawTriangle(0, 0);
+    this.drawTriangle(halfSize, halfSize);
 
-  shape.context.stroke();
+    this._context.fill();
 
-  return shape.canvas;
+    return this._canvas;
+  }
+
+  drawTriangle(offsetX, offsetY) {
+    const size = this._size;
+    const halfSize = size / 2;
+    const quarterSize = size / 4;
+
+    this._context.moveTo(quarterSize + offsetX, offsetY);
+    this._context.lineTo(halfSize + offsetX, halfSize + offsetY);
+    this._context.lineTo(offsetX, halfSize + offsetY);
+
+    this._context.closePath();
+  }
 }

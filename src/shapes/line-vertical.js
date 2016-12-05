@@ -1,17 +1,12 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Line from './line';
 
-export default function lineVertical (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class VerticalLine extends Line {
+  drawTile() {
+    this._context.translate(this._size, 0);
+    this._context.rotate(90 * Math.PI / 180);
 
-  shape.context.strokeStyle = PATTERN_COLOR;
-  shape.context.lineWidth = 2;
+    Line.prototype.drawTile.call(this);
 
-  shape.context.moveTo(5, 0);
-  shape.context.lineTo(5, 20);
-  shape.context.moveTo(15, 0);
-  shape.context.lineTo(15, 20);
-  shape.context.stroke();
-
-  return shape.canvas;
+    return this._canvas;
+  }
 }

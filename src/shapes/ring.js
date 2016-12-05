@@ -1,16 +1,19 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Dot from './dot';
 
-export default function ring (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class Ring extends Dot {
+  drawTile() {
+    const halfSize = this._size / 2;
+    const diameter = this._size / 5;
 
-  shape.context.strokeStyle = PATTERN_COLOR;
-  shape.context.lineWidth = 2;
+    this._context.beginPath();
 
-  shape.context.arc(5, 5, 4, 0, 2 * Math.PI);
-  shape.context.moveTo(19, 15);
-  shape.context.arc(15, 15, 4, 0, 2 * Math.PI);
-  shape.context.stroke();
+    this.setStrokeProps();
 
-  return shape.canvas;
+    this.drawDot(0, 0, diameter);
+    this.drawDot(halfSize, halfSize, diameter);
+
+    this._context.stroke();
+
+    return this._canvas;
+  }
 }

@@ -1,19 +1,28 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Shape from './shape';
 
-export default function weave (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class Weave extends Shape {
+  drawTile() {
+    this._context.beginPath();
 
-  shape.context.beginPath();
-  shape.context.strokeStyle = PATTERN_COLOR;
-  shape.context.lineWidth = 2;
+    this.setStrokeProps();
 
-  shape.context.moveTo(1, 1);
-  shape.context.lineTo(9, 9);
+    this.drawWeave(0, 0);
 
-  shape.context.moveTo(11, 19);
-  shape.context.lineTo(19, 11);
-  shape.context.stroke();
+    this._context.stroke();
 
-  return shape.canvas;
+    return this._canvas;
+  }
+
+  drawWeave(offsetX, offsetY) {
+    const size = this._size;
+    const halfSize = size / 2;
+
+    this._context.moveTo(offsetX + 1, offsetY + 1);
+    this._context.lineTo(halfSize - 1, halfSize - 1);
+
+    this._context.moveTo(halfSize + 1, size - 1);
+    this._context.lineTo(size - 1, halfSize + 1);
+
+    this._context.closePath();
+  }
 }

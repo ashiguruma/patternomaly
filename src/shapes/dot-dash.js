@@ -1,21 +1,28 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Shape from './shape';
+import Dot from './dot';
+import Dash from './dash';
 
-export default function dotDash (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class DotDash extends Shape {
+  drawTile() {
+    const halfSize = this._size / 2;
 
-  shape.context.beginPath();
-  shape.context.fillStyle = PATTERN_COLOR;
+    this._context.beginPath();
 
-  shape.context.arc(5, 5, 2, 0, 2 * Math.PI);
-  shape.context.fill();
+    this.setStrokeProps();
 
-  shape.context.strokeStyle = PATTERN_COLOR;
-  shape.context.lineWidth = 2;
+    const dash = new Dash();
+    dash.drawDash.call(this, halfSize, halfSize);
 
-  shape.context.moveTo(11, 11);
-  shape.context.lineTo(19, 19);
-  shape.context.stroke();
+    this._context.closePath();
+    this._context.stroke();
 
-  return shape.canvas;
+    this.setFillProps();
+
+    const dot = new Dot();
+    dot.drawDot.call(this, 0, 0);
+
+    this._context.fill();
+
+    return this._canvas;
+  }
 }

@@ -1,26 +1,29 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Shape from './shape';
 
-export default function zigzag (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class Zigzag extends Shape {
+  drawTile() {
+    this._context.beginPath();
 
-  shape.context.strokeStyle = PATTERN_COLOR;
-  shape.context.lineWidth = 2;
-  shape.context.lineJoin = 'round';
+    this.setStrokeProps();
 
-  shape.context.moveTo(0, 2);
-  shape.context.lineTo(5, 7);
-  shape.context.lineTo(10, 2);
-  shape.context.lineTo(15, 7);
-  shape.context.lineTo(20, 2);
+    this.drawZigzag(0);
+    this.drawZigzag(this._size / 2);
 
-  shape.context.moveTo(0, 12);
-  shape.context.lineTo(5, 17);
-  shape.context.lineTo(10, 12);
-  shape.context.lineTo(15, 17);
-  shape.context.lineTo(20, 12);
+    this._context.stroke();
 
-  shape.context.stroke();
+    return this._canvas;
+  }
 
-  return shape.canvas;
+  drawZigzag(offsetY) {
+    const size = this._size;
+    const quarterSize = size / 4;
+    const halfSize = size / 2;
+    const tenthSize = size / 10;
+
+    this._context.moveTo(0, tenthSize + offsetY);
+    this._context.lineTo(quarterSize, (halfSize - tenthSize) + offsetY);
+    this._context.lineTo(halfSize, tenthSize + offsetY);
+    this._context.lineTo(size - quarterSize, (halfSize - tenthSize) + offsetY);
+    this._context.lineTo(size, tenthSize + offsetY);
+  }
 }

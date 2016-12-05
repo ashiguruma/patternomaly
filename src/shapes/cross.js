@@ -1,23 +1,31 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Shape from './shape';
 
-export default function cross (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class Cross extends Shape {
+  drawTile() {
+    const halfSize = this._size / 2;
 
-  shape.context.beginPath();
-  shape.context.strokeStyle = PATTERN_COLOR;
-  shape.context.lineWidth = 2;
+    this._context.beginPath();
 
-  shape.context.moveTo(1, 1);
-  shape.context.lineTo(9, 9);
-  shape.context.moveTo(1, 9);
-  shape.context.lineTo(9, 1);
+    this.setStrokeProps();
 
-  shape.context.moveTo(11, 11);
-  shape.context.lineTo(19, 19);
-  shape.context.moveTo(11, 19);
-  shape.context.lineTo(19, 11);
-  shape.context.stroke();
+    this.drawCross(0, 0);
+    this.drawCross(halfSize, halfSize);
 
-  return shape.canvas;
+    this._context.stroke();
+
+    return this._canvas;
+  }
+
+  drawCross(offsetX, offsetY) {
+    const size = this._size;
+    const halfSize = size / 2;
+    const gap = 1;
+
+    this._context.moveTo(offsetX + gap, offsetY + gap);
+    this._context.lineTo((halfSize - gap) + offsetX, (halfSize - gap) + offsetY);
+    this._context.moveTo(offsetX + gap, (halfSize - gap) + offsetY);
+    this._context.lineTo((halfSize - gap) + offsetX, offsetY + gap);
+
+    this._context.closePath();
+  }
 }

@@ -1,21 +1,24 @@
+import { BACKGROUND_COLOR, PATTERN_COLOR } from './config';
 import shapes, { getRandomShape } from './shapes/index';
 
 export function draw (
   shapeType = 'square',
-  backgroundColor = 'rgba(100, 100, 100, 0.7)',
-  patternColor = 'rgba(255, 255, 255, 0.7)',
+  backgroundColor = BACKGROUND_COLOR,
+  patternColor = PATTERN_COLOR,
   size = 20
 ) {
-  let outerSize = size * 2;
-  let patternCanvas = document.createElement('canvas');
-  let patternContext = patternCanvas.getContext('2d');
-  let shape = shapes[shapeType];
-  let pattern;
+  const patternCanvas = document.createElement('canvas');
+  const patternContext = patternCanvas.getContext('2d');
+  const outerSize = size * 2;
+
+  const Shape = shapes[shapeType];
+  const shape = new Shape(size, backgroundColor, patternColor);
+
+  const pattern = patternContext.createPattern(shape.drawTile(), 'repeat');
 
   patternCanvas.width = outerSize;
   patternCanvas.height = outerSize;
 
-  pattern = patternContext.createPattern(shape.call(shape, size, backgroundColor), 'repeat');
   pattern.shapeType = shapeType;
 
   return pattern;

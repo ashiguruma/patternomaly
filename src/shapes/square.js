@@ -1,14 +1,28 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Shape from './shape';
 
-export default function square (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class Square extends Shape {
+  drawTile() {
+    const halfSize = this._size / 2;
 
-  shape.context.beginPath();
-  shape.context.fillStyle = PATTERN_COLOR;
+    this._context.beginPath();
 
-  shape.context.fillRect(0, 0, 10, 10);
-  shape.context.fillRect(10, 10, 10, 10);
+    this.setFillProps();
 
-  return shape.canvas;
+    this.drawSquare(0, 0);
+    this.drawSquare(halfSize, halfSize);
+
+    this._context.fill();
+
+    return this._canvas;
+  }
+
+  drawSquare(offsetX, offsetY) {
+    const size = this._size;
+    const halfSize = size / 2;
+    const gap = size / 20;
+
+    this._context.fillRect(offsetX + gap, offsetY + gap, halfSize - (gap * 2), halfSize - (gap * 2));
+
+    this._context.closePath();
+  }
 }

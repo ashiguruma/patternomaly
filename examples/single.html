@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Patternomaly Optional</title>
+
+    <style>
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+
+      label[for=pattern-switch] {
+        background-color: #aaa;
+        border-radius: 4px;
+        color: white;
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 10px 10px 10px 8px;
+      }
+    </style>
+    <script src='Chart.js' charset='utf-8'></script>
+    <script src='../dist/patternomaly.js'></script>
+  </head>
+  <body onload='load();'>
+    <canvas id='donut' width='500' height='400'></canvas>
+    <canvas id='donut2' width='500' height='400'></canvas>
+
+    <script>
+    var load = function() {
+      var donutCanvas = document.getElementById('donut')
+      var donutContext = donutCanvas.getContext('2d');
+
+      var donut2Canvas = document.getElementById('donut2')
+      var donut2Context = donut2Canvas.getContext('2d');
+
+      var patternSize = 20;
+
+      var data = [
+        300, 50, 100, 210, 140,
+        56, 80, 260, 210, 130,
+        283
+      ];
+
+      var labels = [
+        'One', 'Two', 'Three', 'Four', 'Five',
+        'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+        'Eleven'
+      ];
+
+      var dataset = {
+        datasets: [{
+          data: data,
+          backgroundColor: [
+            pattern.draw('plus', '#1f77b4', undefined, patternSize),
+            pattern.draw('cross', '#e377c2', undefined, patternSize),
+            pattern.draw('dash', '#ff7f0e', undefined, patternSize),
+            pattern.draw('cross-dash', '#2ca02c', undefined, patternSize),
+            pattern.draw('dot-dash', '#bcbd22', undefined, patternSize),
+            pattern.draw('dot', '#d62728', undefined, patternSize),
+            pattern.draw('disc', '#17becf', undefined, patternSize),
+            pattern.draw('ring', '#9467bd', undefined, patternSize),
+            pattern.draw('line', '#7f7f7f', undefined, patternSize),
+            pattern.draw('line-vertical', '#8c564b', undefined, patternSize),
+            pattern.draw('weave', '#3366cc', undefined, patternSize)
+          ]
+        }],
+        labels: labels
+      };
+
+      var donut = new Chart(donutContext, {
+        type: 'doughnut',
+        data: dataset,
+        options: {
+          responsive: false
+        }
+      });
+
+      var dataset2 = {
+        datasets: [{
+          data: data,
+          backgroundColor: [
+            pattern.draw('zigzag', '#1f77b4', undefined, patternSize),
+            pattern.draw('zigzag-vertical', '#e377c2', undefined, patternSize),
+            pattern.draw('diagonal', '#ff7f0e', undefined, patternSize),
+            pattern.draw('diagonal-right-left', '#2ca02c', undefined, patternSize),
+            pattern.draw('square', '#bcbd22', undefined, patternSize),
+            pattern.draw('triangle', '#d62728', undefined, patternSize),
+            pattern.draw('triangle-inverted', '#17becf', undefined, patternSize),
+            pattern.draw('box', '#9467bd', undefined, patternSize),
+            pattern.draw('diamond', '#7f7f7f', undefined, patternSize),
+            pattern.draw('diamond-box', '#8c564b', undefined, patternSize),
+            // pattern.draw('weave', '#3366cc', undefined, patternSize)
+          ]
+        }],
+        labels: labels
+      };
+
+      var donut2 = new Chart(donut2Context, {
+        type: 'doughnut',
+        data: dataset2,
+        options: {
+          responsive: false
+        }
+      });
+    };
+    </script>
+  </body>
+</html>

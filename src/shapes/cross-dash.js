@@ -1,21 +1,22 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Shape from './shape';
+import Cross from './cross';
+import Dash from './dash';
 
-export default function crossDash (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class CrossDash extends Shape {
+  drawTile() {
+    const halfSize = this._size / 2;
+    this._context.beginPath();
 
-  shape.context.beginPath();
-  shape.context.strokeStyle = PATTERN_COLOR;
-  shape.context.lineWidth = 2;
+    this.setStrokeProps();
 
-  shape.context.moveTo(1, 1);
-  shape.context.lineTo(9, 9);
-  shape.context.moveTo(1, 9);
-  shape.context.lineTo(9, 1);
+    const cross = new Cross();
+    cross.drawCross.call(this, 0, 0);
 
-  shape.context.moveTo(11, 11);
-  shape.context.lineTo(19, 19);
-  shape.context.stroke();
+    const dash = new Dash();
+    dash.drawDash.call(this, halfSize, halfSize);
 
-  return shape.canvas;
+    this._context.stroke();
+
+    return this._canvas;
+  }
 }

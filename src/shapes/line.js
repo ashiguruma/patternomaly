@@ -1,17 +1,28 @@
-import PATTERN_COLOR from './config';
-import generateShape from './generate';
+import Shape from './shape';
 
-export default function line (size, backgroundColor) {
-  const shape = generateShape(size, backgroundColor);
+export default class Line extends Shape {
+  drawTile() {
+    const halfSize = this._size / 2;
 
-  shape.context.strokeStyle = PATTERN_COLOR;
-  shape.context.lineWidth = 2;
+    this._context.beginPath();
 
-  shape.context.moveTo(0, 5);
-  shape.context.lineTo(20, 5);
-  shape.context.moveTo(0, 15);
-  shape.context.lineTo(20, 15);
-  shape.context.stroke();
+    this.setStrokeProps();
 
-  return shape.canvas;
+    this.drawLine(0, 0);
+    this.drawLine(halfSize, halfSize);
+
+    this._context.stroke();
+
+    return this._canvas;
+  }
+
+  drawLine(offsetX, offsetY) {
+    const size = this._size;
+    const quarterSize = size / 4;
+
+    this._context.moveTo(0, quarterSize + offsetY);
+    this._context.lineTo(this._size, quarterSize + offsetY);
+
+    this._context.closePath();
+  }
 }
