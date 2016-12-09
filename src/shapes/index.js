@@ -1,74 +1,11 @@
-import Plus from './plus';
-import Cross from './cross';
-import Dash from './dash';
-import CrossDash from './cross-dash';
-import Dot from './dot';
-import DotDash from './dot-dash';
-import Disc from './disc';
-import Ring from './ring';
-import Line from './line';
-import LineVertical from './line-vertical';
-import Weave from './weave';
-import Zigzag from './zigzag';
-import ZigzagVertical from './zigzag-vertical';
-import Diagonal from './diagonal';
-import DiagonalRightLeft from './diagonal-right-left';
-import Square from './square';
-import Box from './box';
-import Triangle from './triangle';
-import TriangleInverted from './triangle-inverted';
-import Diamond from './diamond';
-import DiamondBox from './diamond-box';
-
-const deprecatedShapes = [
-  'circle',
-  'triangle-vertical',
-  'line-horizontal',
-  'line-diagonal-lr',
-  'line-diagonal-rl',
-  'zigzag-horizontal',
-  'diamond-outline'
-];
-
-const shapes = {
-  'plus': Plus,
-  'cross': Cross,
-  'dash': Dash,
-  'cross-dash': CrossDash,
-  'dot': Dot,
-  'dot-dash': DotDash,
-  'disc': Disc,
-  'ring': Ring,
-  'line': Line,
-  'line-vertical': LineVertical,
-  'weave': Weave,
-  'zigzag': Zigzag,
-  'zigzag-vertical': ZigzagVertical,
-  'diagonal': Diagonal,
-  'diagonal-right-left': DiagonalRightLeft,
-  'square': Square,
-  'box': Box,
-  'triangle': Triangle,
-  'triangle-inverted': TriangleInverted,
-  'diamond': Diamond,
-  'diamond-box': DiamondBox,
-
-  // deprecated shape names
-  // TODO replace deprecatedShapes with this then use Object.keys
-  'circle': Disc,
-  'triangle-vertical': TriangleInverted,
-  'line-horizontal': Line,
-  'line-diagonal-lr': Diagonal,
-  'line-diagonal-rl': DiagonalRightLeft,
-  'zigzag-horizontal': Zigzag,
-  'diamond-outline': DiamondBox,
-};
+import { shapes, deprecatedShapes } from './shapes-list';
 
 export function getRandomShape(excludedShapeTypes = []) {
+  const deprecatedShapesList = Object.keys(deprecatedShapes);
   let shapesList = Object.keys(shapes);
 
   shapesList = shapesList.filter((shape) => {
-    if (deprecatedShapes.indexOf(shape) === -1) {
+    if (deprecatedShapesList.indexOf(shape) === -1) {
       return shape;
     }
   });

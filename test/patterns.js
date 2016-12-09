@@ -18,8 +18,8 @@ const COLORS = [
 ];
 
 function generateColors (total) {
-  let colorsList = COLORS.slice(0);
-  let colorsTotal = total / COLORS.length;
+  const colorsList = COLORS.slice(0);
+  const colorsTotal = total / COLORS.length;
 
   for (let i = 1; i < colorsTotal; i++) {
     Array.prototype.push.apply(colorsList, COLORS);
@@ -44,9 +44,8 @@ describe('pattern', () => {
         '#ff6384',
         '#36a2eb'
       ];
-      let testPatterns;
 
-      testPatterns = pattern.generate(colorList);
+      const testPatterns = pattern.generate(colorList);
 
       assert(Array.isArray(testPatterns));
       expect(testPatterns.length).to.equal(2);
@@ -55,11 +54,9 @@ describe('pattern', () => {
     });
 
     it('should NOT generate contiguous patterns of the same type', () => {
-      let colorList = generateColors(100);
+      const colorList = generateColors(100);
+      const testPatterns = pattern.generate(colorList);
       let hasContiguous = false;
-      let testPatterns;
-
-      testPatterns = pattern.generate(colorList);
 
       hasContiguous = testPatterns.some((pattern, index, patterns) => {
         if (index === 0) {
