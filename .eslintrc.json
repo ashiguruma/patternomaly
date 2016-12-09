@@ -34,6 +34,9 @@
       ],
       "prefer-arrow-callback": [
         "error"
+      ],
+      "prefer-const": [
+        "error"
       ]
     }
 }
