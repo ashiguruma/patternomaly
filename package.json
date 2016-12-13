@@ -1,6 +1,6 @@
 {
   "name": "patternomaly",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Easily generate patterns for use in data graphics",
   "jsnext:main": "dist/patternomaly.mjs",
   "main": "dist/patternomaly.js",
