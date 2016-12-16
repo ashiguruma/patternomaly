@@ -19,7 +19,7 @@ export default class DotDash extends Shape {
     this.setFillProps();
 
     const dot = new Dot();
-    dot.drawDot.call(this, 0, 0);
+    dot.drawDot.call(this);
 
     this._context.fill();
 

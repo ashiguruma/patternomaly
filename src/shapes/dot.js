@@ -8,7 +8,7 @@ export default class Dot extends Shape {
 
     this.setFillProps();
 
-    this.drawDot(0, 0);
+    this.drawDot();
     this.drawDot(halfSize, halfSize);
 
     this._context.fill();
@@ -16,7 +16,7 @@ export default class Dot extends Shape {
     return this._canvas;
   }
 
-  drawDot(offsetX, offsetY, diameter = this._size / 10) {
+  drawDot(offsetX = 0, offsetY = 0, diameter = this._size / 10) {
     const size = this._size;
     const quarterSize = size / 4;
     const x = quarterSize + offsetX;

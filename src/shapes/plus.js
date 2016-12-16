@@ -8,7 +8,7 @@ export default class Plus extends Shape {
 
     this.setStrokeProps();
 
-    this.drawPlus(0, 0);
+    this.drawPlus();
     this.drawPlus(halfSize, halfSize);
 
     this._context.stroke();

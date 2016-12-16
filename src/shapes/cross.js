@@ -8,7 +8,7 @@ export default class Cross extends Shape {
 
     this.setStrokeProps();
 
-    this.drawCross(0, 0);
+    this.drawCross();
     this.drawCross(halfSize, halfSize);
 
     this._context.stroke();
@@ -16,10 +16,10 @@ export default class Cross extends Shape {
     return this._canvas;
   }
 
-  drawCross(offsetX, offsetY) {
+  drawCross(offsetX = 0, offsetY = 0) {
     const size = this._size;
     const halfSize = size / 2;
-    const gap = 1;
+    const gap = 2;
 
     this._context.moveTo(offsetX + gap, offsetY + gap);
     this._context.lineTo((halfSize - gap) + offsetX, (halfSize - gap) + offsetY);

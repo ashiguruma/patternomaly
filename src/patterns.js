@@ -1,11 +1,10 @@
-import { BACKGROUND_COLOR, PATTERN_COLOR } from './config';
 import shapes, { getRandomShape } from './shapes/index';
 
 export function draw (
   shapeType = 'square',
-  backgroundColor = BACKGROUND_COLOR,
-  patternColor = PATTERN_COLOR,
-  size = 20
+  backgroundColor,
+  patternColor,
+  size
 ) {
   const patternCanvas = document.createElement('canvas');
   const patternContext = patternCanvas.getContext('2d');

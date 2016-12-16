@@ -8,7 +8,7 @@ export default class Line extends Shape {
 
     this.setStrokeProps();
 
-    this.drawLine(0, 0);
+    this.drawLine();
     this.drawLine(halfSize, halfSize);
 
     this._context.stroke();
@@ -16,7 +16,7 @@ export default class Line extends Shape {
     return this._canvas;
   }
 
-  drawLine(offsetX, offsetY) {
+  drawLine(offsetX = 0, offsetY = 0) {
     const size = this._size;
     const quarterSize = size / 4;
 

@@ -8,7 +8,7 @@ export default class Diagonal extends Shape {
 
     this.setStrokeProps();
 
-    this.drawDiagonalLine(0, 0);
+    this.drawDiagonalLine();
     this.drawDiagonalLine(halfSize, halfSize);
 
     this._context.stroke();
@@ -16,7 +16,7 @@ export default class Diagonal extends Shape {
     return this._canvas;
   }
 
-  drawDiagonalLine(offsetX, offsetY) {
+  drawDiagonalLine(offsetX = 0, offsetY = 0) {
     const size = this._size;
     const halfSize = size / 2;
     const gap = 1;

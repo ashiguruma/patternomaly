@@ -6,7 +6,7 @@ export default class Zigzag extends Shape {
 
     this.setStrokeProps();
 
-    this.drawZigzag(0);
+    this.drawZigzag();
     this.drawZigzag(this._size / 2);
 
     this._context.stroke();
@@ -14,7 +14,7 @@ export default class Zigzag extends Shape {
     return this._canvas;
   }
 
-  drawZigzag(offsetY) {
+  drawZigzag(offsetY = 0) {
     const size = this._size;
     const quarterSize = size / 4;
     const halfSize = size / 2;

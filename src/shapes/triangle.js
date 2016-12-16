@@ -8,7 +8,7 @@ export default class Triangle extends Shape {
 
     this.setFillProps();
 
-    this.drawTriangle(0, 0);
+    this.drawTriangle();
     this.drawTriangle(halfSize, halfSize);
 
     this._context.fill();
@@ -16,7 +16,7 @@ export default class Triangle extends Shape {
     return this._canvas;
   }
 
-  drawTriangle(offsetX, offsetY) {
+  drawTriangle(offsetX = 0, offsetY = 0) {
     const size = this._size;
     const halfSize = size / 2;
     const quarterSize = size / 4;

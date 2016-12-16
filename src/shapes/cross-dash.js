@@ -10,7 +10,7 @@ export default class CrossDash extends Shape {
     this.setStrokeProps();
 
     const cross = new Cross();
-    cross.drawCross.call(this, 0, 0);
+    cross.drawCross.call(this);
 
     const dash = new Dash();
     dash.drawDash.call(this, halfSize, halfSize);

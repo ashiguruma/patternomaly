@@ -8,7 +8,7 @@ export default class Square extends Shape {
 
     this.setFillProps();
 
-    this.drawSquare(0, 0);
+    this.drawSquare();
     this.drawSquare(halfSize, halfSize);
 
     this._context.fill();
@@ -16,7 +16,7 @@ export default class Square extends Shape {
     return this._canvas;
   }
 
-  drawSquare(offsetX, offsetY) {
+  drawSquare(offsetX = 0, offsetY = 0) {
     const size = this._size;
     const halfSize = size / 2;
     const gap = size / 20;

@@ -1,7 +1,8 @@
+import { BACKGROUND_COLOR, PATTERN_COLOR } from '../config';
 import { POINT_STYLE } from '../config';
 
 export default class Shape {
-  constructor(size, backgroundColor, patternColor) {
+  constructor(size = 20, backgroundColor = BACKGROUND_COLOR, patternColor = PATTERN_COLOR) {
     this._canvas = document.createElement('canvas');
     this._context = this._canvas.getContext('2d');
 

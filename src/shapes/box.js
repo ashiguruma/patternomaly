@@ -8,7 +8,7 @@ export default class Box extends Shape {
 
     this.setStrokeProps();
 
-    this.drawBox(0, 0);
+    this.drawBox();
     this.drawBox(halfSize, halfSize);
 
     this._context.stroke();
@@ -16,7 +16,7 @@ export default class Box extends Shape {
     return this._canvas;
   }
 
-  drawBox(offsetX, offsetY) {
+  drawBox(offsetX = 0, offsetY = 0) {
     const size = this._size;
     const halfSize = size / 2;
     const gap = size / 20;
