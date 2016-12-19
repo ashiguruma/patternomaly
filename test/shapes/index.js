@@ -8,12 +8,10 @@ global.document = jsdom.jsdom('<html></html>');
 describe('shapes', () => {
   describe('#getRandomShape', () => {
     it('should NOT generate the specified excluded shape types', () => {
-      let containsExcludedShape = false;
       const randomShapes = [];
       const excludedShapes = Object.keys(shapes);
-      const removedShape = excludedShapes[0];
-
-      excludedShapes.splice(0, 1);
+      const removedShape = excludedShapes.splice(0, 1)[0];
+      let containsExcludedShape = false;
 
       for (let i = 0; i < 30; i++) {
         randomShapes.push(getRandomShape(excludedShapes));
@@ -25,11 +23,11 @@ describe('shapes', () => {
     });
 
     it('should NOT return a list that includes any deprecated patterns', () => {
-      let containsDeprecatedShapes = false;
       const deprecatedShapesList = Object.keys(deprecatedShapes);
       const randomShapes = [];
+      let containsDeprecatedShapes = false;
 
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 30; i++) {
         randomShapes.push(getRandomShape());
       }
 

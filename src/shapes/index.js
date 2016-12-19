@@ -1,14 +1,9 @@
 import { shapes, deprecatedShapes } from './shapes-list';
 
-export function getRandomShape(excludedShapeTypes = []) {
-  const deprecatedShapesList = Object.keys(deprecatedShapes);
-  let shapesList = Object.keys(shapes);
+const completeShapesList = [];
 
-  shapesList = shapesList.filter((shape) => {
-    if (deprecatedShapesList.indexOf(shape) === -1) {
-      return shape;
-    }
-  });
+export function getRandomShape(excludedShapeTypes = []) {
+  const shapesList = Object.keys(shapes);
 
   excludedShapeTypes.forEach(shapeType => {
     shapesList.splice(shapesList.indexOf(shapeType), 1);
@@ -19,4 +14,6 @@ export function getRandomShape(excludedShapeTypes = []) {
   return shapesList[randomIndex];
 }
 
-export default shapes;
+Object.assign(completeShapesList, shapes, deprecatedShapes);
+
+export default completeShapesList;

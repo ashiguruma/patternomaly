@@ -31,7 +31,7 @@ function generateColors (total) {
 describe('pattern', () => {
 
   describe('#draw', () => {
-    it('should return a canvas element', () => {
+    it('should return a canvas pattern', () => {
       const testPattern = pattern.draw();
 
       expect(testPattern.toString()).to.equal('[object CanvasPattern]');
