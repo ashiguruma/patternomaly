@@ -45,7 +45,7 @@ datasets: [{
     pattern.draw('circle', '#ff7f0e'),
     pattern.draw('diamond', '#2ca02c'),
     pattern.draw('zigzag-horizontal', '#17becf'),
-    pattern.draw('triangle', '#7f7f7f')
+    pattern.draw('triangle', 'rgb(255, 99, 132, 0.4)') // with opacity
   ]
 }]
 ```
