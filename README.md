@@ -83,3 +83,11 @@ datasets: [{
 In order to provide an alternative view for visually impaired viewers it's a good idea to [provide a patterned alternative](http://betweentwobrackets.com/data-graphics-and-colour-vision/#patternstotherescue).
 
 See the [pattern option example page](examples/optional.html) for a simple implementation of a pattern toggle switch for Chart.js.
+
+## Typescript / Angular
+A typings file is included in this package. Just insert `import {draw, generate} from 'patternomaly'` in the header of your .ts file.
+Still you have to add the javascript file to your build e.g. in the scripts array in angular.cli.json e.g.   `"scripts": ["node_modules/patternomaly/dist/patternomaly.js"]`.
+
+
+
+

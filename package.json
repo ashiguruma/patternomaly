@@ -4,6 +4,7 @@
   "description": "Easily generate patterns for use in data graphics",
   "jsnext:main": "dist/patternomaly.mjs",
   "main": "dist/patternomaly.js",
+  "typings": "index.d.ts",
   "browser": "dist/patternomaly.js",
   "scripts": {
     "prebuild": "npm run lint",
