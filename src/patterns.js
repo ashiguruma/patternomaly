@@ -23,6 +23,24 @@ export function draw (
   return pattern;
 }
 
+export function image (
+  shapeType = 'square',
+  backgroundColor,
+  patternColor,
+  size
+) {
+  const outerSize = size * 2;
+
+  const image = = new Image(outerSize, outerSize);
+  
+  const Shape = shapes[shapeType];
+  const shape = new Shape(size, backgroundColor, patternColor);
+
+  image.src = shape.drawTile().toDataURL();
+
+  return image;
+}
+
 export function generate(colorList) {
   let firstShapeType;
   let previousShapeType;
