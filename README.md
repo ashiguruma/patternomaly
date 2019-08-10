@@ -13,6 +13,10 @@ This library came about as part of [an issue in Chart.js](https://github.com/cha
 ## Usage
 
     npm install patternomaly
+    
+or include this in your code:
+    
+    <script src="https://cdn.jsdelivr.net/npm/patternomaly@1"></script>
 
 Generate a single canvas pattern
 
