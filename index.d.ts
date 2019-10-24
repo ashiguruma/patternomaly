@@ -1,3 +1,5 @@
+export type ShapeType = 'plus' | 'cross' | 'dash' | 'cross-dash' | 'dot' | 'dot-dash' | 'disc' | 'ring' | 'line' | 'line-vertical' | 'weave' | 'zigzag' | 'zigzag-vertical' | 'diagonal' | 'diagonal-right-left' | 'square' | 'box' | 'triangle' | 'triangle-inverted' | 'diamond' | 'diamond-box';
+
 /**
  * Generate a single (HTML5) canvas pattern
  * @param shapeType pattern shape type
@@ -6,7 +8,7 @@
  * @param size of pattern "gutter"
  */
 export declare function draw(
-    shapeType: 'plus' | 'cross' | 'dash' | 'cross-dash' | 'dot' | 'dot-dash' | 'disc' | 'ring' | 'line' | 'line-vertical' | 'weave' | 'zigzag' | 'zigzag-vertical' | 'diagonal' | 'diagonal-right-left' | 'square' | 'box' | 'triangle' | 'triangle-inverted' | 'diamond' | 'diamond-box',
+    shapeType: ShapeType,
     /** background color of pattern e.g. '#1f77b4' */
     backgroundColor: string,
     /** color of the pattern e.g. #000000 */
